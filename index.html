@@ -124,7 +124,7 @@
                     <div class="text-xs text-gray-400 mb-2">Mengamankan file script dari server Garena...</div>
                     <div class="flex justify-center items-center gap-3">
                         <span class="animate-spin h-5 w-5 border-2 border-green-500 border-t-transparent rounded-full"></span>
-                        <span class="gaming-font font-bold text-green-400 text-lg">Mengunduh dalam <span id="timer-number" class="text-white text-xl">10</span> detik...</span>
+                        <span class="gaming-font font-bold text-green-400 text-lg">Mengunduh dalam <span id="timer-number" class="text-white text-xl">3</span> detik...</span>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,6 @@
     <!-- INTERACTIVE JAVASCRIPT & AD ADSTERRA DETECTOR -->
     <script>
         // --- CONFIGURATION ---
-        // Link Adsterra lu udah nangkring mantap di sini bray!
         const ADSTERRA_DIRECT_LINK = "https://bigotcomet.com/yg5d5m68?key=3f65b078b61df4f332956f06964a1c1f"; 
         
         let selectedBrandName = "";
@@ -220,6 +219,12 @@
                 return;
             }
 
+            if (isAdblockActive) {
+                alert("⚠️ Sistem Keamanan: Harap matikan AdBlock atau DNS AdGuard Anda untuk mulai mengunduh file Sensi!");
+                document.getElementById("adblock-banner").scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
             const aim = Math.floor(Math.random() * 6) + 94; // 94% to 99%
             const red = Math.floor(Math.random() * 6) + 90; // 90% to 95%
             const scope2 = Math.floor(Math.random() * 6) + 93; // 93% to 98%
@@ -234,6 +239,9 @@
             const panel = document.getElementById("results-panel");
             panel.classList.remove("hidden");
             panel.scrollIntoView({ behavior: 'smooth' });
+
+            // JALUR CEPAT: Begitu klik "AMBIL SENSI SEKARANG", langsung buka tab baru ke Adsterra lu!
+            window.open(ADSTERRA_DIRECT_LINK, '_blank');
         }
 
         // 5. DOWNLOAD ACTION WITH COUNTDOWN & REDIRECT
@@ -251,7 +259,9 @@
             downloadBtn.classList.add("hidden");
             countdownBox.classList.remove("hidden");
 
-            let timeLeft = 10;
+            let timeLeft = 3; // DIUBAH JADI 3 DETIK!
+            timerText.textContent = timeLeft;
+
             const countdownInterval = setInterval(() => {
                 timeLeft--;
                 timerText.textContent = timeLeft;
