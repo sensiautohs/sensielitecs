@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0b0c10] text-white p-4 font-sans">
+
+    <div class="max-w-md mx-auto text-center">
+        <!-- Badge Premium -->
+        <span class="bg-red-500/20 text-red-500 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Update 2026</span>
+        
+        <h2 class="text-3xl font-black mt-4 mb-2 tracking-wider">SENSI AUTO HEADSHOT</h2>
+        <p class="text-gray-400 text-sm mb-6">Dapatkan settingan sensitivitas terbaik khusus untuk tipe HP kamu agar gampang headshot!</p>
+
+        <!-- Sensi Generator Box -->
+        <div class="bg-gray-900 border border-gray-800 p-6 rounded-2xl text-left shadow-2xl">
+            <h3 class="font-bold text-red-500 text-lg mb-2">Cek Sensi HP Lu</h3>
+            <p class="text-xs text-gray-400 mb-4">Pilih merk HP lu di bawah, klik "Cari Sensi", dan sistem otomatis akan mengkalibrasi sensitivitas terbaik.</p>
+            
+            <select id="brand" class="bg-black border border-gray-800 text-white rounded-lg p-3 w-full mb-4 focus:outline-none focus:border-red-500">
+                <option value="">-- Pilih Merk HP --</option>
+                <option value="xiaomi">Xiaomi / Poco / Redmi</option>
+                <option value="infinix">Infinix</option>
+                <option value="samsung">Samsung</option>
+                <option value="oppo">Oppo / RealMe</option>
+                <option value="vivo">Vivo</option>
+            </select>
+            
+            <!-- Tombol Cari Sensi -->
+            <button onclick="cariSensi()" class="w-full bg-gradient-to-r from-red-600 to-orange-600 py-3.5 rounded-xl font-bold text-white shadow-lg shadow-red-600/30 active:scale-95 transition-all duration-100">
+                Cari Sensi &amp; Aktifkan Booster
+            </button>
+
+            <!-- NOTIFIKASI PERINGATAN ADGUARD/ADBLOCK (Sembunyi secara default) -->
+            <div id="adblockWarning" class="hidden mt-6 bg-red-950/80 border border-red-500 p-4 rounded-xl text-center">
+                <p class="text-red-400 font-bold text-sm mb-1">⚠️ DETEKSI ADGUARD / ADBLOCK AKTIF!</p>
+                <p class="text-xs text-gray-300 leading-relaxed">Sistem gagal mengkalibrasi sensi. Silakan **matikan DNS AdGuard / Private DNS / Adblock** di HP lu terlebih dahulu, lalu coba lagi!</p>
+            </div>
+
+            <!-- Box Hasil Sensi -->
+            <div id="hasil" class="hidden mt-6 bg-black p-4 rounded-xl border border-red-500/30">
+                <p class="text-sm text-gray-400 mb-3 text-center">Hasil Kalibrasi Sensi <span id="namaHp" class="text-red-500 uppercase font-bold"></span>:</p>
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="bg-gray-900 p-3 rounded border border-gray-800">Lihat Sekeliling: <span id="s1" class="font-bold text-red-500 text-sm block mt-1"></span></div>
+                    <div class="bg-gray-900 p-3 rounded border border-gray-800">Red Dot Sight: <span id="s2" class="font-bold text-red-500 text-sm block mt-1"></span></div>
+                    <div class="bg-gray-900 p-3 rounded border border-gray-800">2x Scope: <span id="s3" class="font-bold text-red-500 text-sm block mt-1"></span></div>
+                    <div class="bg-gray-900 p-3 rounded border border-gray-800">4x Scope: <span id="s4" class="font-bold text-red-500 text-sm block mt-1"></span></div>
+                </div>
+                <p class="text-[10px] text-gray-500 mt-3 text-center italic">*Sensitivitas berhasil disesuaikan dengan patch game terbaru!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Sistem Deteksi & Redirect -->
+    <script>
+        function cariSensi() {
+            var b = document.getElementById("brand").value;
+            var warningBox = document.getElementById("adblockWarning");
+            var hasilBox = document.getElementById("hasil");
+            
+            if(!b) {
+                alert("Pilih HP dulu bray!");
+                return;
+            }
+
+            // Sembunyikan hasil & warning dulu tiap kali tombol diklik ulang
+            warningBox.classList.add("hidden");
+            hasilBox.classList.add("hidden");
+
+            // Tes memanggil domain Adsterra / Ads untuk mengecek DNS AdGuard
+            fetch("https://bigotcomet.com/yg5d5m68?key=3f65b078b61df4f332956f06964a1c1f", {
+                method: "HEAD",
+                mode: "no-cors"
+            })
+            .then(function() {
+                // JIKA LOLOS (AdGuard Mati) -> Tampilkan Sensi & Buka Adsterra
+                var d = {
+                    xiaomi: ["96", "90", "85", "80"],
+                    infinix: ["100", "95", "88", "84"],
+                    samsung: ["92", "88", "82", "78"],
+                    oppo: ["95", "91", "84", "80"],
+                    vivo: ["98", "92", "86", "82"]
+                };
+                
+                document.getElementById("namaHp").innerText = b;
+                document.getElementById("s1").innerText = d[b][0] + "%";
+                document.getElementById("s2").innerText = d[b][1] + "%";
+                document.getElementById("s3").innerText = d[b][2] + "%";
+                document.getElementById("s4").innerText = d[b][3] + "%";
+                hasilBox.classList.remove("hidden");
+                
+                // Trigger Direct Link di tab baru
+                window.open("https://bigotcomet.com/yg5d5m68?key=3f65b078b61df4f332956f06964a1c1f", "_blank");
+            })
+            .catch(function(err) {
+                // JIKA GAGAL/TERBLOKIR (AdGuard/Adblock Aktif) -> Tampilkan Warning
+                warningBox.classList.remove("hidden");
+            });
+        }
+    </script>
+</body>
+</html>
