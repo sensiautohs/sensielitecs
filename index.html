@@ -13,7 +13,35 @@
             font-family: 'Poppins', sans-serif;
             background-color: #0b0b0f;
             color: #f3f4f6;
+            transition: background-color 0.3s, color 0.3s;
         }
+        /* Tambahan Style untuk Fitur Light Mode Gaming */
+        body.light-theme {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+        body.light-theme .card-glow {
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(255, 0, 60, 0.1);
+            border: 1px solid rgba(255, 0, 60, 0.2);
+            color: #111827;
+        }
+        body.light-theme .bg-gray-950, body.light-theme .bg-gray-900\/80, body.light-theme .bg-gray-900\/90 {
+            background-color: #ffffff;
+            color: #111827;
+        }
+        body.light-theme .text-gray-400, body.light-theme .text-gray-300 {
+            color: #4b5563;
+        }
+        body.light-theme .brand-btn {
+            background-color: #e5e7eb;
+            border-color: #d1d5db;
+            color: #111827;
+        }
+        body.light-theme .brand-btn:hover {
+            background-color: rgba(255, 0, 60, 0.1);
+        }
+        
         .gaming-font {
             font-family: 'Oxanium', sans-serif;
         }
@@ -37,8 +65,10 @@
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
 
     <!-- TOP ANNOUNCEMENT (AUTO DETECTION BANNER) -->
-    <div class="bg-red-900/40 border-b border-red-600/50 py-2 px-4 text-center text-xs md:text-sm gaming-font tracking-wider text-red-400">
-        📢 SYSTEM: <span id="detected-device" class="font-bold text-white uppercase">Mendeteksi perangkat...</span> Terdeteksi! Sensitivitas dioptimalkan.
+    <div class="bg-red-900/40 border-b border-red-600/50 py-2 px-4 text-center text-xs md:text-sm gaming-font tracking-wider text-red-400 flex justify-between items-center">
+        <span class="mx-auto">📢 SYSTEM: <span id="detected-device" class="font-bold text-white uppercase">Mendeteksi perangkat...</span> Terdeteksi! Sensitivitas dioptimalkan.</span>
+        <!-- FITUR NEW 1: THEME TOGGLE SWITCH -->
+        <button onclick="toggleTheme()" class="bg-gray-800 hover:bg-red-600 px-2 py-1 rounded text-[10px] font-bold tracking-widest text-white transition">🌓 LIGHT/DARK</button>
     </div>
 
     <!-- MAIN CONTENT -->
@@ -50,9 +80,16 @@
                 SENSI ELITE VVIP
             </h1>
             <p class="text-gray-400 text-xs md:text-sm mt-1">Sensi Auto Headshot Terbaik Edisi Update Terkini 2026</p>
-            <div class="inline-flex items-center gap-2 mt-3 bg-red-900/30 px-3 py-1 rounded-full border border-red-600/30 text-[10pt]">
-                <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
-                <span class="text-green-400 font-semibold text-xs">ONLINE & AKTIF</span>
+            
+            <div class="flex flex-wrap justify-center gap-2 mt-3">
+                <div class="inline-flex items-center gap-2 bg-red-900/30 px-3 py-1 rounded-full border border-red-600/30 text-[10pt]">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-green-400 font-semibold text-xs">ONLINE & AKTIF</span>
+                </div>
+                <!-- FITUR NEW 2: LIVE USER COUNTER -->
+                <div class="inline-flex items-center gap-2 bg-blue-900/30 px-3 py-1 rounded-full border border-blue-600/30 text-[10pt]">
+                    <span class="text-blue-400 font-semibold text-xs">🔥 <span id="live-users">542</span> GAMERS ONLINE</span>
+                </div>
             </div>
         </div>
 
@@ -104,7 +141,10 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             <h2 class="gaming-font text-lg font-bold text-green-400 mb-3 flex items-center gap-2">
                 ✅ <span>SENSI BERHASIL DIKALIBRASI</span>
             </h2>
-            <div class="space-y-3 mb-5 bg-gray-950 p-4 rounded-xl text-sm">
+            <div class="space-y-3 mb-5 bg-gray-950 p-4 rounded-xl text-sm relative">
+                <!-- FITUR NEW 3: ONE-CLICK COPY CODE SYSTEM -->
+                <button onclick="copySensiText()" class="absolute top-2 right-2 bg-gray-800 hover:bg-green-600 text-white text-[10px] py-1 px-2 rounded transition font-bold">📋 SALIN DATA</button>
+                
                 <div class="flex justify-between border-b border-gray-800 pb-2">
                     <span class="text-gray-400">Target Perangkat:</span>
                     <span class="font-bold text-white gaming-font" id="result-brand">-</span>
@@ -144,8 +184,9 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
 
         <!-- FAKE LIVE CHAT TESTIMONI (FF Gamer Style) -->
         <div class="bg-gray-900/80 rounded-2xl p-4 card-glow mb-6">
-            <h2 class="gaming-font text-sm font-bold text-red-500 mb-3 flex items-center gap-2">
-                💬 <span class="tracking-wide">TESTIMONI LIVE CHAT</span>
+            <h2 class="gaming-font text-sm font-bold text-red-500 mb-3 flex items-center justify-between">
+                <span class="flex items-center gap-2">💬 <span class="tracking-wide">TESTIMONI LIVE CHAT</span></span>
+                <span class="text-[10px] text-gray-500 font-normal">Auto-Filter Aktif 🛡️</span>
             </h2>
             <!-- Scrollable chat box -->
             <div id="chat-box" class="chat-container max-h-[160px] overflow-y-auto space-y-3 pr-2 text-xs">
@@ -168,6 +209,55 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
         
         let selectedBrandName = "";
         let isAdblockActive = false;
+
+        // FITUR NEW 4: AUDIO GENERATOR (Efek Suara Klik Gaming via Web Audio API)
+        function playClickSound(freq = 400, type = 'sine', duration = 0.08) {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.type = type;
+                oscillator.frequency.value = freq;
+                gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + duration);
+            } catch (e) { console.log('Audio not supported yet'); }
+        }
+
+        // FITUR NEW 1: THEME TOGGLE FUNCTION
+        function toggleTheme() {
+            playClickSound(600, 'triangle');
+            document.body.classList.toggle('light-theme');
+        }
+
+        // FITUR NEW 2: LIVE USER SIMULATOR
+        function startLiveUserCounter() {
+            const userEl = document.getElementById("live-users");
+            setInterval(() => {
+                let current = parseInt(userEl.textContent);
+                let change = Math.floor(Math.random() * 7) - 3; // Fluktuasi naik/turun acak
+                userEl.textContent = Math.max(450, current + change);
+            }, 3000);
+        }
+
+        // FITUR NEW 3: ONE-CLICK COPY FUNCTION
+        function copySensiText() {
+            playClickSound(800, 'square', 0.1);
+            const brand = document.getElementById("result-brand").textContent;
+            const aim = document.getElementById("val-aim").textContent;
+            const red = document.getElementById("val-red").textContent;
+            const s2x = document.getElementById("val-2x").textContent;
+            const s4x = document.getElementById("val-4x").textContent;
+            
+            const teksHasil = `⚡ SENSI ELITE VVIP 2026 ⚡\nHP: ${brand}\nLihat Sekeliling: ${aim}\nRed Dot Sight: ${red}\n2x Scope: ${s2x}\n4x Scope: ${s4x}`;
+            
+            navigator.clipboard.writeText(teksHasil).then(() => {
+                alert("Data Sensi berhasil disalin ke clipboard, bro!");
+            });
+        }
 
         // 1. AUTO DEVICE DETECTION
         function detectDevice() {
@@ -211,6 +301,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
 
         // 3. BRAND SELECTOR ACTION
         function selectBrand(brand) {
+            playClickSound(450, 'sine');
             selectedBrandName = brand;
             const buttons = document.querySelectorAll(".brand-btn");
             buttons.forEach(btn => {
@@ -227,15 +318,19 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
         // 4. GENERATE SENSITIVITY ACTION
         function generateSensi() {
             if (!selectedBrandName) {
+                playClickSound(200, 'sawtooth', 0.2);
                 alert("Pilih Merk HP Lu Dulu Bray!");
                 return;
             }
 
             if (isAdblockActive) {
+                playClickSound(200, 'sawtooth', 0.2);
                 alert("⚠️ Sistem Keamanan: Harap matikan AdBlock atau DNS AdGuard Anda untuk mulai mengunduh file Sensi!");
                 document.getElementById("adblock-banner").scrollIntoView({ behavior: 'smooth' });
                 return;
             }
+
+            playClickSound(700, 'sine', 0.15);
 
             const aim = Math.floor(Math.random() * 6) + 94; // 94% to 99%
             const red = Math.floor(Math.random() * 6) + 90; // 90% to 95%
@@ -259,11 +354,13 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
         // 5. DOWNLOAD ACTION WITH COUNTDOWN & REDIRECT
         function startDownload() {
             if (isAdblockActive) {
+                playClickSound(200, 'sawtooth', 0.2);
                 alert("⚠️ Sistem Keamanan: Harap matikan AdBlock atau DNS AdGuard Anda untuk mulai mengunduh file Sensi!");
                 document.getElementById("adblock-banner").scrollIntoView({ behavior: 'smooth' });
                 return;
             }
 
+            playClickSound(550, 'sine');
             const downloadBtn = document.getElementById("btn-download");
             const countdownBox = document.getElementById("countdown-box");
             const timerText = document.getElementById("timer-number");
@@ -277,6 +374,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             const countdownInterval = setInterval(() => {
                 timeLeft--;
                 timerText.textContent = timeLeft;
+                playClickSound(600, 'sine', 0.05);
 
                 if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
@@ -285,18 +383,31 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             }, 1000);
         }
 
-        // 6. FAKE LIVE CHAT SYSTEM
+        // 6. FAKE LIVE CHAT SYSTEM DENGAN FITUR NEW 5: ANTI BADWORD / TOXIC CHAT FILTER
         const fakeChatPool = [
             { name: "Fadhil_Slayer", msg: "Sumpah work 100% di Xiaomi Redmi 9C gw, langsung merah semua headshotnya!" },
-            { name: "Infinix_Booyah", msg: "Gokil bray, tadinya ga percaya pas coba script vvip ini gila langsung auto aim lock!" },
+            { name: "Infinix_Booyah", msg: "Gokil bray, tadinya ga perceive pas coba script vvip ini gila langsung auto aim lock!" },
             { name: "Rian_Gamerz", msg: "Thanks bang sensinya dapet yang paling presisi, musuh langsung dituduh citer wkwkw" },
             { name: "Siti_Chii", msg: "Bocil FF wajib pake ini sih, biar ga numpang beban di rank wkwk" },
             { name: "Ex_CiterFF", msg: "Ini sensi aman ga di akun utama bray? | Balas: Aman banget no banned asli." },
             { name: "RajaHshot", msg: "Habis download script langsung naik bintang di Ranked bray, parah ngeri banget" },
             { name: "Samsul_99", msg: "Enak banget fiturnya, tadi pas nembak langsung nge-lock kepala" },
             { name: "Kiki_Riz", msg: "Keren sumpah, makasih min infonya, ijin share ke grup guild ya!" },
-            { name: "Luthfi_OP", msg: "Infinix Hot 10 gw langsung gila sensinya, licin nembaknya!" }
+            { name: "Luthfi_OP", msg: "Infinix Hot 10 gw langsung gila sensinya, licin nembaknya!" },
+            // Contoh chat kotor yang akan otomatis disensor oleh sistem filter
+            { name: "Bocil_Toxic", msg: "Kontol susal banget downloadnya anjing lah!" }
         ];
+
+        // Daftar kata kotor untuk disensor
+        const kataKotor = [/kontol/gi, /anjing/gi, /bangsat/gi, /memek/gi];
+
+        function bersihkanPesan(pesan) {
+            let hasil = pesan;
+            kataKotor.forEach(regex => {
+                hasil = hasil.replace(regex, "***");
+            });
+            return hasil;
+        }
 
         function startFakeChat() {
             const chatBox = document.getElementById("chat-box");
@@ -317,6 +428,9 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             const chatBox = document.getElementById("chat-box");
             const randomUser = fakeChatPool[Math.floor(Math.random() * fakeChatPool.length)];
             
+            // Terapkan Fitur 5 (Filter sensor teks) sebelum push ke HTML
+            const pesanBersih = bersihkanPesan(randomUser.msg);
+
             const chatBubble = document.createElement("div");
             chatBubble.className = "bg-gray-950 p-2.5 rounded-xl border border-gray-800/40 animate-fade-in";
             chatBubble.innerHTML = `
@@ -324,7 +438,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
                     <span class="font-bold text-red-400 gaming-font">⚡ ${randomUser.name}</span>
                     <span class="text-[9px] text-gray-600">Baru saja</span>
                 </div>
-                <p class="text-gray-300">${randomUser.msg}</p>
+                <p class="text-gray-300">${pesanBersih}</p>
             `;
             chatBox.appendChild(chatBubble);
             chatBox.scrollTop = chatBox.scrollHeight;
@@ -334,6 +448,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             detectDevice();
             checkAdBlocker();
             startFakeChat();
+            startLiveUserCounter(); // Aktifkan Counter Gamer Online
         }
     </script>
 <script src="https://bigotcomet.com/58/b0/a7/58b0a7213cf3fb0c5c1c92f3a00018d1.js"></script>
