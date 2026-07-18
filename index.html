@@ -4,126 +4,365 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>⚡ SENSI ELITE VVIP - AUTO HEADSHOT 2026 ⚡</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tambahan: Library Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts: Poppins & Oxanium for Gaming Vibes -->
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #0b0b0f; color: #f3f4f6; }
-        .gaming-font { font-family: 'Oxanium', sans-serif; }
-        .fire-shadow { text-shadow: 0 0 10px #ff003c, 0 0 20px #ff003c; }
-        .card-glow { box-shadow: 0 0 15px rgba(255, 0, 60, 0.15); border: 1px solid rgba(255, 0, 60, 0.3); }
-        .chat-container::-webkit-scrollbar { width: 4px; }
-        .chat-container::-webkit-scrollbar-thumb { background-color: #ff003c; border-radius: 10px; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0b0b0f;
+            color: #f3f4f6;
+        }
+        .gaming-font {
+            font-family: 'Oxanium', sans-serif;
+        }
+        .fire-shadow {
+            text-shadow: 0 0 10px #ff003c, 0 0 20px #ff003c;
+        }
+        .card-glow {
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.15);
+            border: 1px solid rgba(255, 0, 60, 0.3);
+        }
+        /* Custom scrollbar for live chat */
+        .chat-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-container::-webkit-scrollbar-thumb {
+            background-color: #ff003c;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
 
-    <!-- TOP ANNOUNCEMENT -->
+    <!-- TOP ANNOUNCEMENT (AUTO DETECTION BANNER) -->
     <div class="bg-red-900/40 border-b border-red-600/50 py-2 px-4 text-center text-xs md:text-sm gaming-font tracking-wider text-red-400">
-        📢 SYSTEM: <span id="detected-device" class="font-bold text-white uppercase">Mendeteksi perangkat...</span> Terdeteksi!
+        📢 SYSTEM: <span id="detected-device" class="font-bold text-white uppercase">Mendeteksi perangkat...</span> Terdeteksi! Sensitivitas dioptimalkan.
     </div>
 
+    <!-- MAIN CONTENT -->
     <main class="flex-grow container mx-auto px-4 py-6 max-w-lg">
+        
+        <!-- HEADER / LOGO -->
         <div class="text-center my-6">
             <h1 class="gaming-font text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 to-red-600 tracking-wider fire-shadow">
                 SENSI ELITE VVIP
             </h1>
+            <p class="text-gray-400 text-xs md:text-sm mt-1">Sensi Auto Headshot Terbaik Edisi Update Terkini 2026</p>
+            <div class="inline-flex items-center gap-2 mt-3 bg-red-900/30 px-3 py-1 rounded-full border border-red-600/30 text-[10pt]">
+                <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-green-400 font-semibold text-xs">ONLINE & AKTIF</span>
+            </div>
         </div>
 
-        <!-- ADBLOCK ALERT -->
+        <!-- ADGUARD / ADBLOCK WARNING ALERT (Hidden by default, shown if AdBlock is active) -->
         <div id="adblock-banner" class="hidden bg-yellow-600/20 border-2 border-yellow-500/80 rounded-xl p-4 mb-6 text-center animate-pulse">
-            <h3 class="font-bold text-yellow-300">⚠️ ADBLOCK TERDETEKSI</h3>
-            <p class="text-xs text-gray-300">Matikan Adblock untuk download script.</p>
+            <div class="text-yellow-400 text-3xl mb-1">⚠️</div>
+            <h3 class="gaming-font font-bold text-lg text-yellow-300">ADBLOCK / ADGUARD TERDETEKSI</h3>
+            <p class="text-xs text-gray-300 mt-1 leading-relaxed">
+                Matikan Adblock atau DNS AdGuard Anda untuk mengunduh Script Sensi. Web ini memerlukan akses tanpa blokir demi verifikasi sistem.
+            </p>
         </div>
 
-        <!-- BRAND SELECTOR -->
+        <!-- DEVICE BRAND SELECTOR -->
         <div class="bg-gray-900/80 rounded-2xl p-5 mb-6 card-glow">
-            <h2 class="gaming-font text-lg font-bold text-red-500 mb-3">🎮 KALIBRASI PERANGKAT</h2>
+            <h2 class="gaming-font text-lg font-bold text-red-500 mb-3 flex items-center gap-2">
+                🎮 <span>KALIBRASI PERANGKAT</span>
+            </h2>
+            <p class="text-xs text-gray-400 mb-4">Silakan pilih merk HP Anda untuk menghasilkan kombinasi sensitivitas yang paling presisi:</p>
+            
             <div class="grid grid-cols-2 gap-3 mb-4">
-                <button onclick="selectBrand('Xiaomi')" class="brand-btn bg-gray-800 hover:bg-red-600/20 py-2 rounded-xl text-sm font-semibold transition">Xiaomi</button>
-                <button onclick="selectBrand('Infinix')" class="brand-btn bg-gray-800 hover:bg-red-600/20 py-2 rounded-xl text-sm font-semibold transition">Infinix</button>
-                <button onclick="selectBrand('Samsung')" class="brand-btn bg-gray-800 hover:bg-red-600/20 py-2 rounded-xl text-sm font-semibold transition">Samsung</button>
-                <button onclick="selectBrand('Realme')" class="brand-btn bg-gray-800 hover:bg-red-600/20 py-2 rounded-xl text-sm font-semibold transition">Realme</button>
+                <button onclick="selectBrand('Xiaomi')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Xiaomi</button>
+                <button onclick="selectBrand('Infinix')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Infinix</button>
+                <button onclick="selectBrand('Samsung')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Samsung</button>
+                <button onclick="selectBrand('Oppo')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Oppo</button>
+                <button onclick="selectBrand('Vivo')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Vivo</button>
+                <button onclick="selectBrand('Realme')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Realme</button>
+            </div>
+
+            <!-- TAMBAHAN: Progress Bar -->
+            <div id="progress-container" class="hidden mb-4">
+                <div class="flex justify-between text-[10px] text-gray-400 mb-1">
+                    <span>Memverifikasi perangkat...</span>
+                    <span id="progress-text">0%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div id="progress-bar" class="bg-red-500 h-2 rounded-full w-0 transition-all duration-300"></div>
+                </div>
             </div>
             
-            <!-- NEW: LOADING BAR -->
-            <div id="progress-bar-container" class="hidden w-full bg-gray-700 rounded-full h-2.5 mb-4">
-                <div id="progress-bar" class="bg-red-600 h-2.5 rounded-full" style="width: 0%"></div>
-            </div>
-
-            <button id="btn-generate" onclick="generateSensi()" class="w-full bg-red-600 py-3 rounded-xl font-bold transition">⚡ AMBIL SENSI SEKARANG</button>
+            <!-- Generate Button -->
+            <button id="btn-generate" onclick="generateSensi()" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 py-3 rounded-xl font-bold tracking-wider gaming-font transition text-white text-md shadow-lg shadow-red-950/50">
+                ⚡ AMBIL SENSI SEKARANG
+            </button>
         </div>
 
-        <!-- AD SCRIPT -->
-        <div id="container-96722b5e2c790a6b06da6dbc0cb5d956" class="my-4"></div>
+        
+<!-- Ad Script -->
+<script src="https://bigotcomet.com/qpt30est3?key=18a3750c20c6ddd857d68b2db110b06b.js"></script>
 
-        <!-- RESULTS PANEL -->
-        <div id="results-panel" class="hidden bg-gray-900/90 rounded-2xl p-5 mb-6 card-glow">
-            <h2 class="text-green-400 font-bold mb-3">✅ SENSI BERHASIL DIKALIBRASI</h2>
-            <div class="space-y-2 bg-gray-950 p-4 rounded-xl text-sm mb-4">
+<script async="async" data-cfasync="false" src="https://bigotcomet.com/96722b5e2c790a6b06da6dbc0cb5d956/invoke.js"></script>
+<div id="container-96722b5e2c790a6b06da6dbc0cb5d956"></div>
+
+<script>
+atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':90,'width':728,'params':{}};
+</script>
+<script src="https://bigotcomet.com/1ad9cbc2cca914ab050329176ecd4a13/invoke.js"></script>
+
+<!-- GENERATED RESULTS PANEL (Hidden until click) -->
+        <div id="results-panel" class="hidden bg-gray-900/90 rounded-2xl p-5 mb-6 card-glow border-red-500/50">
+            <h2 class="gaming-font text-lg font-bold text-green-400 mb-3 flex items-center gap-2">
+                ✅ <span>SENSI BERHASIL DIKALIBRASI</span>
+            </h2>
+            <div class="space-y-3 mb-5 bg-gray-950 p-4 rounded-xl text-sm">
                 <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">Target:</span>
-                    <span id="result-brand" class="font-bold text-white"></span>
+                    <span class="text-gray-400">Target Perangkat:</span>
+                    <span class="font-bold text-white gaming-font" id="result-brand">-</span>
                 </div>
-                <!-- NEW: DPI DISPLAY -->
                 <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">DPI Rekomendasi:</span>
-                    <span id="val-dpi" class="font-bold text-yellow-400"></span>
+                    <span class="text-gray-400">Lihat Sekeliling:</span>
+                    <span class="font-bold text-yellow-400 gaming-font" id="val-aim">98%</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-800 pb-2">
+                    <span class="text-gray-400">Red Dot Sight:</span>
+                    <span class="font-bold text-yellow-400 gaming-font" id="val-red">94%</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-800 pb-2">
+                    <span class="text-gray-400">2x Scope:</span>
+                    <span class="font-bold text-yellow-400 gaming-font" id="val-2x">96%</span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="text-gray-400">General Sensi:</span>
-                    <span id="val-aim" class="font-bold text-yellow-400">98%</span>
+                    <span class="text-gray-400">4x Scope:</span>
+                    <span class="font-bold text-yellow-400 gaming-font" id="val-4x">92%</span>
                 </div>
             </div>
-            <button id="btn-download" onclick="startDownload()" class="w-full bg-green-600 py-3 rounded-xl font-bold">📥 DOWNLOAD SCRIPT VVIP</button>
+
+            <!-- BUTTON DOWNLOAD WITH INTERACTIVE COUNTDOWN -->
+            <div id="download-section">
+                <button id="btn-download" onclick="startDownload()" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 py-3.5 rounded-xl font-bold tracking-wider gaming-font transition text-white text-center shadow-lg">
+                    📥 DOWNLOAD SCRIPT VVIP (NO PASSWORD)
+                </button>
+                <div id="countdown-box" class="hidden text-center py-2">
+                    <div class="text-xs text-gray-400 mb-2">Mengamankan file script dari server Garena...</div>
+                    <div class="flex justify-center items-center gap-3">
+                        <span class="animate-spin h-5 w-5 border-2 border-green-500 border-t-transparent rounded-full"></span>
+                        <span class="gaming-font font-bold text-green-400 text-lg">Mengunduh dalam <span id="timer-number" class="text-white text-xl">3</span> detik...</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- CHAT -->
+        <!-- FAKE LIVE CHAT TESTIMONI (FF Gamer Style) -->
         <div class="bg-gray-900/80 rounded-2xl p-4 card-glow mb-6">
-            <h2 class="text-sm font-bold text-red-500 mb-3">💬 TESTIMONI LIVE</h2>
-            <div id="chat-box" class="chat-container max-h-[160px] overflow-y-auto space-y-3 pr-2 text-xs"></div>
+            <h2 class="gaming-font text-sm font-bold text-red-500 mb-3 flex items-center gap-2">
+                💬 <span class="tracking-wide">TESTIMONI LIVE CHAT</span>
+            </h2>
+            <!-- Scrollable chat box -->
+            <div id="chat-box" class="chat-container max-h-[160px] overflow-y-auto space-y-3 pr-2 text-xs">
+                <!-- Javascript will auto-generate & push new messages here -->
+            </div>
         </div>
+
     </main>
 
-    <script>
-        const ADSTERRA_DIRECT_LINK = "https://bigotcomet.com/yg5d5m68?key=3f65b078b61df4f332956f06964a1c1f"; 
-        let selectedBrandName = "";
+    <!-- FOOTER -->
+    <footer class="bg-gray-950/80 border-t border-gray-900 py-4 text-center text-[10px] text-gray-500">
+        <p>© 2026 Sensi Elite VVIP. All rights reserved.</p>
+        <p class="mt-1">Dibuat khusus untuk pengoptimalan sensitivitas game Free Fire.</p>
+    </footer>
 
+    <!-- INTERACTIVE JAVASCRIPT & AD ADSTERRA DETECTOR -->
+    <script>
+        // --- CONFIGURATION ---
+        const ADSTERRA_DIRECT_LINK = "https://bigotcomet.com/yg5d5m68?key=3f65b078b61df4f332956f06964a1c1f"; 
+        
+        let selectedBrandName = "";
+        let isAdblockActive = false;
+
+        // 1. AUTO DEVICE DETECTION
+        function detectDevice() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            let deviceType = "Android";
+            
+            if (/android/i.test(userAgent)) {
+                if (/xiaomi|redmi|mi/i.test(userAgent)) {
+                    deviceType = "Xiaomi / POCO";
+                } else if (/infinix/i.test(userAgent)) {
+                    deviceType = "Infinix Mobile";
+                } else if (/samsung/i.test(userAgent)) {
+                    deviceType = "Samsung Galaxy";
+                } else if (/oppo/i.test(userAgent)) {
+                    deviceType = "Oppo Smart";
+                } else if (/vivo/i.test(userAgent)) {
+                    deviceType = "Vivo Smart";
+                } else if (/realme/i.test(userAgent)) {
+                    deviceType = "Realme Device";
+                }
+            } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+                deviceType = "iPhone / iOS";
+            } else {
+                deviceType = "Android User";
+            }
+            document.getElementById("detected-device").textContent = deviceType;
+        }
+
+        // 2. ADGUARD / ADBLOCK DETECTOR
+        function checkAdBlocker() {
+            const fakeAdUrl = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+            fetch(new Request(fakeAdUrl), { method: 'HEAD', mode: 'no-cors' })
+                .then(() => {
+                    isAdblockActive = false;
+                })
+                .catch(() => {
+                    isAdblockActive = true;
+                    document.getElementById("adblock-banner").classList.remove("hidden");
+                });
+        }
+
+        // 3. BRAND SELECTOR ACTION
         function selectBrand(brand) {
             selectedBrandName = brand;
-            document.querySelectorAll(".brand-btn").forEach(b => b.classList.remove('bg-red-600'));
-            event.target.classList.add('bg-red-600');
+            const buttons = document.querySelectorAll(".brand-btn");
+            buttons.forEach(btn => {
+                if (btn.textContent.trim() === brand) {
+                    btn.classList.add("bg-red-600", "border-red-500", "text-white");
+                    btn.classList.remove("bg-gray-800", "border-gray-700");
+                } else {
+                    btn.classList.remove("bg-red-600", "border-red-500", "text-white");
+                    btn.classList.add("bg-gray-800", "border-gray-700");
+                }
+            });
         }
 
+        // 4. GENERATE SENSITIVITY ACTION
         function generateSensi() {
-            if (!selectedBrandName) return alert("Pilih HP dulu bray!");
-            
-            // NEW: Progress Bar Animation
-            const progressBar = document.getElementById("progress-bar");
-            document.getElementById("progress-bar-container").classList.remove("hidden");
+            if (!selectedBrandName) {
+                alert("Pilih Merk HP Lu Dulu Bray!");
+                return;
+            }
+
+            if (isAdblockActive) {
+                alert("⚠️ Sistem Keamanan: Harap matikan AdBlock atau DNS AdGuard Anda untuk mulai mengunduh file Sensi!");
+                document.getElementById("adblock-banner").scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            // TAMBAHAN: Logika Progress Bar
+            document.getElementById("progress-container").classList.remove("hidden");
             let width = 0;
-            let interval = setInterval(() => {
+            let progressInterval = setInterval(() => {
                 if (width >= 100) {
-                    clearInterval(interval);
-                    document.getElementById("results-panel").classList.remove("hidden");
+                    clearInterval(progressInterval);
+                    // Lanjut ke hasil setelah loading
+                    const aim = Math.floor(Math.random() * 6) + 94;
+                    const red = Math.floor(Math.random() * 6) + 90;
+                    const scope2 = Math.floor(Math.random() * 6) + 93;
+                    const scope4 = Math.floor(Math.random() * 6) + 89;
+
+                    document.getElementById("result-brand").textContent = selectedBrandName.toUpperCase();
+                    document.getElementById("val-aim").textContent = aim + "%";
+                    document.getElementById("val-red").textContent = red + "%";
+                    document.getElementById("val-2x").textContent = scope2 + "%";
+                    document.getElementById("val-4x").textContent = scope4 + "%";
+
+                    const panel = document.getElementById("results-panel");
+                    panel.classList.remove("hidden");
+                    panel.scrollIntoView({ behavior: 'smooth' });
                     window.open(ADSTERRA_DIRECT_LINK, '_blank');
                 } else {
-                    width += 5;
-                    progressBar.style.width = width + "%";
+                    width += 10;
+                    document.getElementById("progress-bar").style.width = width + "%";
+                    document.getElementById("progress-text").textContent = width + "%";
                 }
-            }, 100);
-
-            document.getElementById("result-brand").textContent = selectedBrandName.toUpperCase();
-            document.getElementById("val-dpi").textContent = (Math.floor(Math.random() * 200) + 400); // Random DPI
+            }, 200);
         }
 
-        function startDownload() { window.location.href = ADSTERRA_DIRECT_LINK; }
+        // 5. DOWNLOAD ACTION WITH COUNTDOWN & REDIRECT
+        function startDownload() {
+            if (isAdblockActive) {
+                alert("⚠️ Sistem Keamanan: Harap matikan AdBlock atau DNS AdGuard Anda untuk mulai mengunduh file Sensi!");
+                document.getElementById("adblock-banner").scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            // TAMBAHAN: Efek Confetti
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+
+            const downloadBtn = document.getElementById("btn-download");
+            const countdownBox = document.getElementById("countdown-box");
+            const timerText = document.getElementById("timer-number");
+
+            downloadBtn.classList.add("hidden");
+            countdownBox.classList.remove("hidden");
+
+            let timeLeft = 3;
+            timerText.textContent = timeLeft;
+
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+                timerText.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = ADSTERRA_DIRECT_LINK;
+                }
+            }, 1000);
+        }
+
+        // 6. FAKE LIVE CHAT SYSTEM
+        const fakeChatPool = [
+            { name: "Fadhil_Slayer", msg: "Sumpah work 100% di Xiaomi Redmi 9C gw, langsung merah semua headshotnya!" },
+            { name: "Infinix_Booyah", msg: "Gokil bray, tadinya ga percaya pas coba script vvip ini gila langsung auto aim lock!" },
+            { name: "Rian_Gamerz", msg: "Thanks bang sensinya dapet yang paling presisi, musuh langsung dituduh citer wkwkw" },
+            { name: "Siti_Chii", msg: "Bocil FF wajib pake ini sih, biar ga numpang beban di rank wkwk" },
+            { name: "Ex_CiterFF", msg: "Ini sensi aman ga di akun utama bray? | Balas: Aman banget no banned asli." },
+            { name: "RajaHshot", msg: "Habis download script langsung naik bintang di Ranked bray, parah ngeri banget" },
+            { name: "Samsul_99", msg: "Enak banget fiturnya, tadi pas nembak langsung nge-lock kepala" },
+            { name: "Kiki_Riz", msg: "Keren sumpah, makasih min infonya, ijin share ke grup guild ya!" },
+            { name: "Luthfi_OP", msg: "Infinix Hot 10 gw langsung gila sensinya, licin nembaknya!" }
+        ];
+
+        function startFakeChat() {
+            const chatBox = document.getElementById("chat-box");
+            
+            for(let i = 0; i < 4; i++) {
+                addRandomChat();
+            }
+
+            setInterval(() => {
+                addRandomChat();
+                if (chatBox.children.length > 12) {
+                    chatBox.removeChild(chatBox.firstChild);
+                }
+            }, 4000);
+        }
+
+        function addRandomChat() {
+            const chatBox = document.getElementById("chat-box");
+            const randomUser = fakeChatPool[Math.floor(Math.random() * fakeChatPool.length)];
+            
+            const chatBubble = document.createElement("div");
+            chatBubble.className = "bg-gray-950 p-2.5 rounded-xl border border-gray-800/40 animate-fade-in";
+            chatBubble.innerHTML = `
+                <div class="flex items-center justify-between mb-1">
+                    <span class="font-bold text-red-400 gaming-font">⚡ ${randomUser.name}</span>
+                    <span class="text-[9px] text-gray-600">Baru saja</span>
+                </div>
+                <p class="text-gray-300">${randomUser.msg}</p>
+            `;
+            chatBox.appendChild(chatBubble);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
 
         window.onload = function() {
-            const ua = navigator.userAgent;
-            document.getElementById("detected-device").textContent = /android/i.test(ua) ? "ANDROID" : "iOS";
-            // ... (Chat logic tetep sama)
+            detectDevice();
+            checkAdBlocker();
+            startFakeChat();
         }
     </script>
-    <script src="https://bigotcomet.com/96722b5e2c790a6b06da6dbc0cb5d956/invoke.js"></script>
+<script src="https://bigotcomet.com/58/b0/a7/58b0a7213cf3fb0c5c1c92f3a00018d1.js"></script>
 </body>
 </html>
