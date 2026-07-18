@@ -33,12 +33,12 @@
         body.light-theme .text-gray-400, body.light-theme .text-gray-300 {
             color: #4b5563;
         }
-        body.light-theme .brand-btn, body.light-theme .wpn-btn {
+        body.light-theme .brand-btn, body.light-theme .wpn-btn, body.light-theme .srv-btn, body.light-theme .lgn-btn {
             background-color: #e5e7eb;
             border-color: #d1d5db;
             color: #111827;
         }
-        body.light-theme .brand-btn:hover, body.light-theme .wpn-btn:hover {
+        body.light-theme .brand-btn:hover, body.light-theme .wpn-btn:hover, body.light-theme .srv-btn:hover, body.light-theme .lgn-btn:hover {
             background-color: rgba(255, 0, 60, 0.1);
         }
         
@@ -75,7 +75,12 @@
     <main class="flex-grow container mx-auto px-4 py-6 max-w-lg">
         
         <!-- HEADER / LOGO -->
-        <div class="text-center my-6">
+        <div class="text-center my-4 relative">
+            <!-- FITUR BARU 3: BGM MUSIC AUDIO CONTROLLER -->
+            <button onclick="toggleBGM()" class="absolute -top-2 right-0 bg-gray-900/80 border border-gray-700 p-2 rounded-full text-xs shadow card-glow" title="Mute/Unmute BGM">
+                <span id="bgm-icon">🎵 Audio OFF</span>
+            </button>
+
             <h1 class="gaming-font text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 to-red-600 tracking-wider fire-shadow">
                 SENSI ELITE VVIP
             </h1>
@@ -93,6 +98,22 @@
             </div>
         </div>
 
+        <!-- FITUR BARU 4: LIVE DATABASE STATUS SERVER PING -->
+        <div class="grid grid-cols-3 gap-2 mb-4 bg-gray-950 p-2.5 rounded-xl border border-gray-800 text-center text-[10px] gaming-font">
+            <div class="border-r border-gray-800">
+                <span class="text-gray-500 block">ANTI-CHEAT BYPASS</span>
+                <span class="text-green-400 font-bold">● SECURE</span>
+            </div>
+            <div class="border-r border-gray-800">
+                <span class="text-gray-500 block">DATABASE SENSI</span>
+                <span class="text-yellow-400 font-bold">UPDATED 2026</span>
+            </div>
+            <div>
+                <span class="text-gray-500 block">SERVER LOAD</span>
+                <span id="server-load" class="text-red-400 font-bold">42%</span>
+            </div>
+        </div>
+
         <!-- ADGUARD / ADBLOCK WARNING ALERT (Hidden by default, shown if AdBlock is active) -->
         <div id="adblock-banner" class="hidden bg-yellow-600/20 border-2 border-yellow-500/80 rounded-xl p-4 mb-6 text-center animate-pulse">
             <div class="text-yellow-400 text-3xl mb-1">⚠️</div>
@@ -104,32 +125,49 @@
 
         <!-- DEVICE BRAND & WEAPON SELECTOR -->
         <div class="bg-gray-900/80 rounded-2xl p-5 mb-6 card-glow">
-            <h2 class="gaming-font text-lg font-bold text-red-500 mb-3 flex items-center gap-2">
-                🎮 <span>KALIBRASI PERANGKAT</span>
+            <h2 class="gaming-font text-md font-bold text-red-500 mb-3 flex items-center gap-2">
+                🎮 <span>1. KALIBRASI PERANGKAT</span>
             </h2>
-            <p class="text-xs text-gray-400 mb-4">Silakan pilih merk HP Anda untuk menghasilkan kombinasi sensitivitas yang paling presisi:</p>
-            
-            <div class="grid grid-cols-2 gap-3 mb-4">
-                <button onclick="selectBrand('Xiaomi')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Xiaomi</button>
-                <button onclick="selectBrand('Infinix')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Infinix</button>
-                <button onclick="selectBrand('Samsung')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Samsung</button>
-                <button onclick="selectBrand('Oppo')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Oppo</button>
-                <button onclick="selectBrand('Vivo')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Vivo</button>
-                <button onclick="selectBrand('Realme')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Realme</button>
+            <div class="grid grid-cols-3 gap-2 mb-4">
+                <button onclick="selectBrand('Xiaomi')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2 px-1 rounded-xl text-xs font-semibold transition text-center gaming-font">Xiaomi</button>
+                <button onclick="selectBrand('Infinix')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2 px-1 rounded-xl text-xs font-semibold transition text-center gaming-font">Infinix</button>
+                <button onclick="selectBrand('Samsung')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2 px-1 rounded-xl text-xs font-semibold transition text-center gaming-font">Samsung</button>
+                <button onclick="selectBrand('Oppo')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2 px-1 rounded-xl text-xs font-semibold transition text-center gaming-font">Oppo</button>
+                <button onclick="selectBrand('Vivo')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2 px-1 rounded-xl text-xs font-semibold transition text-center gaming-font">Vivo</button>
+                <button onclick="selectBrand('Realme')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2 px-1 rounded-xl text-xs font-semibold transition text-center gaming-font">Realme</button>
             </div>
 
             <!-- FITUR BARU 1: PILIHAN SENJATA SPESIFIK -->
-            <h2 class="gaming-font text-sm font-bold text-yellow-500 mb-2 mt-4 flex items-center gap-2">
-                🔫 <span>TUNING TIPE SENJATA</span>
+            <h2 class="gaming-font text-md font-bold text-yellow-500 mb-2 mt-4 flex items-center gap-2">
+                🔫 <span>2. TUNING TIPE SENJATA</span>
             </h2>
             <div class="grid grid-cols-3 gap-2 mb-4">
                 <button onclick="selectWeapon('Shotgun')" class="wpn-btn bg-gray-800 hover:bg-yellow-600/20 border border-gray-700 hover:border-yellow-500 py-2 px-1 rounded-lg text-xs font-semibold transition text-center gaming-font">Shotgun</button>
                 <button onclick="selectWeapon('SMG')" class="wpn-btn bg-gray-800 hover:bg-yellow-600/20 border border-gray-700 hover:border-yellow-500 py-2 px-1 rounded-lg text-xs font-semibold transition text-center gaming-font">SMG / MP40</button>
                 <button onclick="selectWeapon('Rifle')" class="wpn-btn bg-gray-800 hover:bg-yellow-600/20 border border-gray-700 hover:border-yellow-500 py-2 px-1 rounded-lg text-xs font-semibold transition text-center gaming-font">Rifle / AR</button>
             </div>
+
+            <!-- FITUR BARU 1 (REQ 2): PILIHAN SERVER REGION SPOOFING -->
+            <h2 class="gaming-font text-md font-bold text-cyan-500 mb-2 mt-4 flex items-center gap-2">
+                🌐 <span>3. PILIHAN SERVER TARGET</span>
+            </h2>
+            <div class="grid grid-cols-3 gap-2 mb-4">
+                <button onclick="selectRegion('Indonesia')" class="srv-btn bg-gray-800 hover:bg-cyan-600/20 border border-gray-700 hover:border-cyan-500 py-2 px-1 rounded-lg text-xs font-semibold transition text-center gaming-font">Indonesia</button>
+                <button onclick="selectRegion('Brazil')" class="srv-btn bg-gray-800 hover:bg-cyan-600/20 border border-gray-700 hover:border-cyan-500 py-2 px-1 rounded-lg text-xs font-semibold transition text-center gaming-font">Brazil Proxy</button>
+                <button onclick="selectRegion('Thailand')" class="srv-btn bg-gray-800 hover:bg-cyan-600/20 border border-gray-700 hover:border-cyan-500 py-2 px-1 rounded-lg text-xs font-semibold transition text-center gaming-font">Thailand</button>
+            </div>
+
+            <!-- FITUR BARU 2 (REQ 2): METODE LOGIN GAME AUTHENTICATION -->
+            <h2 class="gaming-font text-md font-bold text-purple-500 mb-2 mt-4 flex items-center gap-2">
+                🔑 <span>4. METODE LOGIN AKUN</span>
+            </h2>
+            <div class="grid grid-cols-2 gap-2 mb-4">
+                <button onclick="selectLogin('Facebook')" class="lgn-btn bg-gray-800 hover:bg-purple-600/20 border border-gray-700 hover:border-purple-500 py-2 px-2 rounded-lg text-xs font-semibold transition text-center gaming-font">Facebook ID</button>
+                <button onclick="selectLogin('Google ID')" class="lgn-btn bg-gray-800 hover:bg-purple-600/20 border border-gray-700 hover:border-purple-500 py-2 px-2 rounded-lg text-xs font-semibold transition text-center gaming-font">Google Account</button>
+            </div>
             
             <!-- Generate Button -->
-            <button id="btn-generate" onclick="startCalibrationProgress()" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 py-3 rounded-xl font-bold tracking-wider gaming-font transition text-white text-md shadow-lg shadow-red-950/50">
+            <button id="btn-generate" onclick="startCalibrationProgress()" class="w-full mt-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 py-3 rounded-xl font-bold tracking-wider gaming-font transition text-white text-md shadow-lg shadow-red-950/50">
                 ⚡ AMBIL SENSI SEKARANG
             </button>
 
@@ -162,33 +200,57 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             <h2 class="gaming-font text-lg font-bold text-green-400 mb-3 flex items-center gap-2">
                 ✅ <span>SENSI BERHASIL DIKALIBRASI</span>
             </h2>
-            <div class="space-y-3 mb-5 bg-gray-950 p-4 rounded-xl text-sm relative">
-                <!-- FITUR NEW 3: ONE-CLICK COPY CODE SYSTEM -->
-                <button onclick="copySensiText()" class="absolute top-2 right-2 bg-gray-800 hover:bg-green-600 text-white text-[10px] py-1 px-2 rounded transition font-bold">📋 SALIN DATA</button>
-                
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">Target Perangkat:</span>
-                    <span class="font-bold text-white gaming-font" id="result-brand">-</span>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                <div class="space-y-2 bg-gray-950 p-4 rounded-xl text-xs relative">
+                    <!-- FITUR NEW 3: ONE-CLICK COPY CODE SYSTEM -->
+                    <button onclick="copySensiText()" class="absolute top-2 right-2 bg-gray-800 hover:bg-green-600 text-white text-[9px] py-1 px-2 rounded transition font-bold">📋 SALIN DATA</button>
+                    
+                    <div class="flex justify-between border-b border-gray-800 pb-1">
+                        <span class="text-gray-400">Target Perangkat:</span>
+                        <span class="font-bold text-white gaming-font" id="result-brand">-</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-800 pb-1">
+                        <span class="text-gray-400">Tuning Senjata:</span>
+                        <span class="font-bold text-yellow-500 gaming-font" id="result-weapon">STANDAR</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-800 pb-1">
+                        <span class="text-gray-400">Server Region:</span>
+                        <span class="font-bold text-cyan-400 gaming-font" id="result-region">INDONESIA</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-800 pb-1">
+                        <span class="text-gray-400">Lihat Sekeliling:</span>
+                        <span class="font-bold text-yellow-400 gaming-font" id="val-aim">98%</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-800 pb-1">
+                        <span class="text-gray-400">Red Dot Sight:</span>
+                        <span class="font-bold text-yellow-400 gaming-font" id="val-red">94%</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-800 pb-1">
+                        <span class="text-gray-400">2x Scope:</span>
+                        <span class="font-bold text-yellow-400 gaming-font" id="val-2x">96%</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">4x Scope:</span>
+                        <span class="font-bold text-yellow-400 gaming-font" id="val-4x">92%</span>
+                    </div>
                 </div>
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">Tuning Senjata:</span>
-                    <span class="font-bold text-yellow-500 gaming-font" id="result-weapon">STANDAR</span>
-                </div>
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">Lihat Sekeliling:</span>
-                    <span class="font-bold text-yellow-400 gaming-font" id="val-aim">98%</span>
-                </div>
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">Red Dot Sight:</span>
-                    <span class="font-bold text-yellow-400 gaming-font" id="val-red">94%</span>
-                </div>
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">2x Scope:</span>
-                    <span class="font-bold text-yellow-400 gaming-font" id="val-2x">96%</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">4x Scope:</span>
-                    <span class="font-bold text-yellow-400 gaming-font" id="val-4x">92%</span>
+
+                <!-- FITUR BARU 5 (REQ 2): RADAR DIAGRAM STATS VISUALIZATION (PRE-LOADED BARS) -->
+                <div class="bg-gray-950 p-4 rounded-xl flex flex-col justify-center text-xs space-y-2">
+                    <span class="gaming-font text-red-400 font-bold block mb-1 text-center">📊 LIVE PREVIEW TUNING</span>
+                    <div>
+                        <div class="flex justify-between text-[10px] text-gray-400 mb-0.5"><span>AIM ACCURACY</span><span id="stat-acc">99%</span></div>
+                        <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden"><div id="bar-acc" class="bg-green-500 h-full" style="width: 99%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-[10px] text-gray-400 mb-0.5"><span>RECOIL CONTROL</span><span id="stat-rec">95%</span></div>
+                        <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden"><div id="bar-rec" class="bg-cyan-500 h-full" style="width: 95%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-[10px] text-gray-400 mb-0.5"><span>INJECTION SPEED</span><span id="stat-spd">98%</span></div>
+                        <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden"><div id="bar-spd" class="bg-yellow-500 h-full" style="width: 98%"></div></div>
+                    </div>
                 </div>
             </div>
 
@@ -255,7 +317,58 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
         
         let selectedBrandName = "";
         let selectedWeaponName = "";
+        let selectedRegionName = "Indonesia";
+        let selectedLoginMethod = "";
         let isAdblockActive = false;
+        
+        // FITUR BARU 3 (REQ 2): AUDIO GENERATOR UNTUK BGM CYBER JEDAG-JEDUG TIPIS
+        let bgmAudioCtx = null;
+        let bgmInterval = null;
+        let isBGMPlaying = false;
+
+        function startBGM() {
+            try {
+                bgmAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                isBGMPlaying = true;
+                document.getElementById("bgm-icon").textContent = "🎵 Audio ON";
+                
+                // Membuat Loop Synth beat sederhana secara berkala (Cyberpunk vibe)
+                let beatCount = 0;
+                bgmInterval = setInterval(() => {
+                    if (!isBGMPlaying) return;
+                    let osc = bgmAudioCtx.createOscillator();
+                    let gain = bgmAudioCtx.createGain();
+                    
+                    // Alternasi nada rendah retro
+                    osc.frequency.setValueAtTime(beatCount % 2 === 0 ? 80 : 60, bgmAudioCtx.currentTime);
+                    osc.type = 'triangle';
+                    
+                    gain.gain.setValueAtTime(0.02, bgmAudioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.00001, bgmAudioCtx.currentTime + 0.4);
+                    
+                    osc.connect(gain);
+                    gain.connect(bgmAudioCtx.destination);
+                    osc.start();
+                    osc.stop(bgmAudioCtx.currentTime + 0.4);
+                    beatCount++;
+                }, 500);
+            } catch (e) { console.log("BGM not supported context"); }
+        }
+
+        function toggleBGM() {
+            if (!bgmAudioCtx) {
+                startBGM();
+                return;
+            }
+            if (isBGMPlaying) {
+                isBGMPlaying = false;
+                document.getElementById("bgm-icon").textContent = "🎵 Audio OFF";
+            } else {
+                isBGMPlaying = true;
+                document.getElementById("bgm-icon").textContent = "🎵 Audio ON";
+                if(bgmAudioCtx.state === 'suspended') { bgmAudioCtx.resume(); }
+            }
+        }
 
         // FITUR NEW 4: AUDIO GENERATOR (Efek Suara Klik Gaming via Web Audio API)
         function playClickSound(freq = 400, type = 'sine', duration = 0.08) {
@@ -288,13 +401,17 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             document.body.classList.toggle('light-theme');
         }
 
-        // FITUR NEW 2: LIVE USER SIMULATOR
+        // FITUR NEW 2: LIVE USER SIMULATOR & FITUR BARU 4 (REQ 2) SERVER LOAD FLUTTER
         function startLiveUserCounter() {
             const userEl = document.getElementById("live-users");
+            const loadEl = document.getElementById("server-load");
             setInterval(() => {
                 let current = parseInt(userEl.textContent);
                 let change = Math.floor(Math.random() * 7) - 3;
                 userEl.textContent = Math.max(450, current + change);
+                
+                let randomLoad = Math.floor(Math.random() * 15) + 35;
+                loadEl.textContent = randomLoad + "%";
             }, 3000);
         }
 
@@ -304,19 +421,20 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             triggerVibration(60);
             const brand = document.getElementById("result-brand").textContent;
             const wpn = document.getElementById("result-weapon").textContent;
+            const rgn = document.getElementById("result-region").textContent;
             const aim = document.getElementById("val-aim").textContent;
             const red = document.getElementById("val-red").textContent;
             const s2x = document.getElementById("val-2x").textContent;
             const s4x = document.getElementById("val-4x").textContent;
             
-            const teksHasil = `⚡ SENSI ELITE VVIP 2026 ⚡\nHP: ${brand}\nSenjata: ${wpn}\nLihat Sekeliling: ${aim}\nRed Dot Sight: ${red}\n2x Scope: ${s2x}\n4x Scope: ${s4x}`;
+            const teksHasil = `⚡ SENSI ELITE VVIP 2026 ⚡\nHP: ${brand}\nSenjata: ${wpn}\nServer: ${rgn}\nLihat Sekeliling: ${aim}\nRed Dot Sight: ${red}\n2x Scope: ${s2x}\n4x Scope: ${s4x}`;
             
             navigator.clipboard.writeText(teksHasil).then(() => {
                 alert("Data Sensi berhasil disalin ke clipboard, bro!");
             });
         }
 
-        // 1. AUTO DEVICE DETECTION
+        // AUTO DEVICE DETECTION
         function detectDevice() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
             let deviceType = "Android";
@@ -343,7 +461,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             document.getElementById("detected-device").textContent = deviceType;
         }
 
-        // 2. ADGUARD / ADBLOCK DETECTOR
+        // ADGUARD / ADBLOCK DETECTOR
         function checkAdBlocker() {
             const fakeAdUrl = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
             fetch(new Request(fakeAdUrl), { method: 'HEAD', mode: 'no-cors' })
@@ -356,7 +474,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
                 });
         }
 
-        // 3. BRAND SELECTOR ACTION
+        // BRAND SELECTOR ACTION
         function selectBrand(brand) {
             playClickSound(450, 'sine');
             triggerVibration(40);
@@ -365,10 +483,8 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             buttons.forEach(btn => {
                 if (btn.textContent.trim() === brand) {
                     btn.classList.add("bg-red-600", "border-red-500", "text-white");
-                    btn.classList.remove("bg-gray-800", "border-gray-700");
                 } else {
                     btn.classList.remove("bg-red-600", "border-red-500", "text-white");
-                    btn.classList.add("bg-gray-800", "border-gray-700");
                 }
             });
         }
@@ -382,10 +498,38 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             buttons.forEach(btn => {
                 if (btn.textContent.toLowerCase().includes(weapon.toLowerCase())) {
                     btn.classList.add("bg-yellow-600", "border-yellow-500", "text-white");
-                    btn.classList.remove("bg-gray-800", "border-gray-700");
                 } else {
                     btn.classList.remove("bg-yellow-600", "border-yellow-500", "text-white");
-                    btn.classList.add("bg-gray-800", "border-gray-700");
+                }
+            });
+        }
+
+        // FITUR BARU 1 (REQ 2): REGION ACTION
+        function selectRegion(region) {
+            playClickSound(480, 'sine');
+            triggerVibration(30);
+            selectedRegionName = region;
+            const buttons = document.querySelectorAll(".srv-btn");
+            buttons.forEach(btn => {
+                if (btn.textContent.includes(region)) {
+                    btn.classList.add("bg-cyan-600", "border-cyan-500", "text-white");
+                } else {
+                    btn.classList.remove("bg-cyan-600", "border-cyan-500", "text-white");
+                }
+            });
+        }
+
+        // FITUR BARU 2 (REQ 2): METODE LOGIN ACTION
+        function selectLogin(method) {
+            playClickSound(520, 'sine');
+            triggerVibration(30);
+            selectedLoginMethod = method;
+            const buttons = document.querySelectorAll(".lgn-btn");
+            buttons.forEach(btn => {
+                if (btn.textContent.includes(method)) {
+                    btn.classList.add("bg-purple-600", "border-purple-500", "text-white");
+                } else {
+                    btn.classList.remove("bg-purple-600", "border-purple-500", "text-white");
                 }
             });
         }
@@ -417,7 +561,12 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             loaderBox.classList.remove("hidden");
             
             let progress = 0;
-            const statusTexts = ["Scanning files...", "Optimizing registry...", "Bypassing anti-cheat...", "Finalizing logs..."];
+            const statusTexts = [
+                `Connecting to ${selectedRegionName} proxy...`,
+                "Bypassing anticheat database...",
+                "Optimizing dynamic engine registry...",
+                "Injecting headshot config..."
+            ];
 
             const interval = setInterval(() => {
                 progress += 4;
@@ -433,12 +582,12 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
                     clearInterval(interval);
                     loaderBox.classList.add("hidden");
                     btnGen.disabled = false;
-                    generateSensi(); // Jalankan logic output data
+                    generateSensi();
                 }
-            }, 60);
+            }, 50);
         }
 
-        // 4. GENERATE SENSITIVITY DATA OUTPUT
+        // GENERATE SENSITIVITY DATA OUTPUT WITH LIVE VISUAL TUNING RADAR BARS
         function generateSensi() {
             playClickSound(700, 'sine', 0.15);
             triggerVibration(100);
@@ -450,10 +599,23 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
 
             document.getElementById("result-brand").textContent = selectedBrandName.toUpperCase();
             document.getElementById("result-weapon").textContent = selectedWeaponName ? selectedWeaponName.toUpperCase() : "STANDARD GLOBAL";
+            document.getElementById("result-region").textContent = selectedRegionName.toUpperCase();
             document.getElementById("val-aim").textContent = aim + "%";
             document.getElementById("val-red").textContent = red + "%";
             document.getElementById("val-2x").textContent = scope2 + "%";
             document.getElementById("val-4x").textContent = scope4 + "%";
+
+            // FITUR BARU 5 (REQ 2): MENGUBAH VALUE LIVE VISUAL TUNING SECARA DYNAMIC
+            const accVal = Math.floor(Math.random() * 4) + 96;
+            const recVal = Math.floor(Math.random() * 6) + 92;
+            const spdVal = Math.floor(Math.random() * 5) + 95;
+
+            document.getElementById("stat-acc").textContent = accVal + "%";
+            document.getElementById("bar-acc").style.width = accVal + "%";
+            document.getElementById("stat-rec").textContent = recVal + "%";
+            document.getElementById("bar-rec").style.width = recVal + "%";
+            document.getElementById("stat-spd").textContent = spdVal + "%";
+            document.getElementById("bar-spd").style.width = spdVal + "%";
 
             const panel = document.getElementById("results-panel");
             panel.classList.remove("hidden");
@@ -462,7 +624,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             window.open(ADSTRA_DIRECT_LINK || ADSTERRA_DIRECT_LINK, '_blank');
         }
 
-        // 5. DOWNLOAD ACTION WITH COUNTDOWN
+        // DOWNLOAD ACTION WITH COUNTDOWN
         function startDownload() {
             if (isAdblockActive) {
                 playClickSound(200, 'sawtooth', 0.2);
@@ -502,7 +664,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             window.location.href = ADSTERRA_DIRECT_LINK;
         }
 
-        // 6. FAKE LIVE CHAT SYSTEM DENGAN FITUR ANTI TOXIC
+        // LIVE CHAT SYSTEM DENGAN FITUR ANTI TOXIC
         const fakeChatPool = [
             { name: "Fadhil_Slayer", msg: "Sumpah work 100% di Xiaomi Redmi 9C gw, langsung merah semua headshotnya!" },
             { name: "Infinix_Booyah", msg: "Gokil bray, tadinya ga percaya pas coba script vvip ini gila langsung auto aim lock!" },
@@ -550,7 +712,7 @@ atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':9
             chatBox.appendChild(chatBubble);
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            msgInput.value = ""; // Reset form input pesan saja
+            msgInput.value = "";
         }
 
         function startFakeChat() {
