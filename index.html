@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sensi Guru AI v2 - Best FF Sensitivity Settings</title>
-    <!-- Google Fonts & FontAwesome Icons -->
+    <title>Elite Sensi AI v2 - Pengaturan Sensitivitas FF Terbaik</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* --- RESET & BASE STYLES --- */
@@ -324,57 +324,6 @@
             color: #ff4a4a;
         }
 
-        /* --- GAMING GEAR GEAR (AFFILIATE) --- */
-        .section-title {
-            text-align: center;
-            margin: 50px 0 20px;
-            font-size: 24px;
-            font-weight: 700;
-        }
-        .gear-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto 50px;
-            padding: 0 20px;
-        }
-        .gear-card {
-            background-color: #161a23;
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid #2d3748;
-            text-align: center;
-        }
-        .gear-tag {
-            background-color: rgba(255, 74, 74, 0.2);
-            color: #ff4a4a;
-            font-size: 11px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .gear-card h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .gear-card p {
-            font-size: 13px;
-            color: #a0aec0;
-            margin-bottom: 15px;
-        }
-        .btn-buy {
-            background-color: #ff4a4a;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            display: inline-block;
-        }
-
         /* --- REVIEWS / TESTIMONI --- */
         .reviews-container {
             background-color: #161a23;
@@ -418,7 +367,7 @@
             text-align: center;
             font-size: 13px;
             color: #a0aec0;
-            margin-bottom: 60px; /* Spacer for fixed music player on mobile */
+            margin-bottom: 60px; /* Spacer untuk musik di HP */
         }
 
         /* --- ANIMATIONS --- */
@@ -451,31 +400,30 @@
     <!-- BACKGROUND AUDIO PLAYER -->
     <div class="audio-player">
         <button class="player-btn" id="music-btn" onclick="toggleMusic()">▶</button>
-        <span class="player-text" id="music-status">BGM: OFF</span>
-        <!-- Menggunakan musik bebas royalti bergenre synthwave/gaming -->
+        <span class="player-text" id="music-status">Musik: MATI</span>
         <audio id="bg-audio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
     </div>
 
     <!-- HEADER -->
     <header>
         <div class="nav-container">
-            <div class="logo">TAKI<span>SENSI</span></div>
-            <div class="badge-100k">100K+ DOWNLOADS</div>
+            <div class="logo">ELITE<span>SENSI</span></div>
+            <div class="badge-100k">100K+ UNDUHAN</div>
         </div>
     </header>
 
     <!-- HERO -->
     <section class="hero">
-        <h1>Sensi Guru AI v2 ⚡</h1>
+        <h1>Elite Sensi AI ⚡</h1>
         <p>Dapatkan rekomendasi settingan sensitivitas Free Fire terbaik khusus untuk perangkat HP kamu agar makin mudah headshot!</p>
     </section>
 
     <!-- MAIN GENERATOR -->
     <main class="main-container">
         <div class="generator-card">
-            <div class="card-title">PRO ENGINE GENERATOR</div>
+            <div class="card-title">MESIN GENERATOR PRO</div>
             
-            <!-- Step 1: Select OS -->
+            <!-- Step 1: Pilih OS -->
             <div class="form-group">
                 <label>PILIH SISTEM OPERASI (OS)</label>
                 <div class="os-selector">
@@ -486,7 +434,7 @@
 
             <!-- Step 2: Device Model -->
             <div class="form-group">
-                <label>MODEL PERANGKAT (CONTOH: REDMI NOTE 12 / INFIX)</label>
+                <label>MODEL PERANGKAT (CONTOH: REDMI NOTE 12 / INFINIX)</label>
                 <input type="text" id="device-model" placeholder="Masukkan tipe HP kamu...">
             </div>
 
@@ -502,7 +450,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button class="btn-generate" onclick="startScanningProcess()">GENERATE BEST SENSI</button>
+            <button class="btn-generate" onclick="startScanningProcess()">BUAT SENSI TERBAIK</button>
 
             <!-- LOADING BOX -->
             <div class="loader-box" id="loader-box">
@@ -512,16 +460,16 @@
 
             <!-- RESULTS -->
             <div class="results-box" id="results-box">
-                <div class="results-header">⚙️ OB54 META READY OPTIMIZED</div>
+                <div class="results-header">⚙️ DIOPTIMALKAN UNTUK META OB54</div>
                 <div class="sensi-grid">
-                    <div class="sensi-item"><span class="sensi-label">General</span><span class="sensi-value" id="val-general">--</span></div>
-                    <div class="sensi-item"><span class="sensi-label">Red Dot</span><span class="sensi-value" id="val-reddot">--</span></div>
+                    <div class="sensi-item"><span class="sensi-label">Lihat Sekeliling (General)</span><span class="sensi-value" id="val-general">--</span></div>
+                    <div class="sensi-item"><span class="sensi-label">Red Dot Sight</span><span class="sensi-value" id="val-reddot">--</span></div>
                     <div class="sensi-item"><span class="sensi-label">2x Scope</span><span class="sensi-value" id="val-2x">--</span></div>
                     <div class="sensi-item"><span class="sensi-label">4x Scope</span><span class="sensi-value" id="val-4x">--</span></div>
                     <div class="sensi-item"><span class="sensi-label">Sniper Scope</span><span class="sensi-value" id="val-sniper">--</span></div>
-                    <div class="sensi-item"><span class="sensi-label">Free Look</span><span class="sensi-value" id="val-freelook">--</span></div>
+                    <div class="sensi-item"><span class="sensi-label">Lihat Sekitar (Free Look)</span><span class="sensi-value" id="val-freelook">--</span></div>
                 </div>
-                <button class="btn-copy" onclick="copyToClipboard()">COPY ALL SETTINGS</button>
+                <button class="btn-copy" onclick="copyToClipboard()">SALIN SEMUA SETTINGAN</button>
                 <div class="security-note">✓ Aman | Bukan Injector/Cheat | Atur Manual di Game</div>
             </div>
 
@@ -530,59 +478,37 @@
 
     <!-- TRUSTED BADGES -->
     <div class="badges-container">
-        <div class="badge-item">⚡ 10,000+ DEVICES</div>
-        <div class="badge-item">🔥 OB54 META READY</div>
-        <div class="badge-item">🛡️ 100% SECURE</div>
+        <div class="badge-item">⚡ 10.000+ PERANGKAT</div>
+        <div class="badge-item">🔥 SIAP META OB54</div>
+        <div class="badge-item">🛡️ 100% AMAN</div>
     </div>
 
-    <!-- RECOMMENDED GEAR -->
-    <h2 class="section-title">RECOMMENDED GAMING GEAR</h2>
-    <section class="gear-grid">
-        <div class="gear-card">
-            <span class="gear-tag">Best Seller</span>
-            <h3>Pro Gaming Finger Sleeves</h3>
-            <p>Sarung jempol anti keringat untuk kelancaran layar saat melakukan drag shoot.</p>
-            <a href="#" class="btn-buy">GRAB NOW</a>
-        </div>
-        <div class="gear-card">
-            <span class="gear-tag">Special Deal</span>
-            <h3>Precision L1R1 Triggers</h3>
-            <p>Tombol mekanik tambahan untuk kontrol responsif layaknya gamer 4 jari pro.</p>
-            <a href="#" class="btn-buy">BUY NOW</a>
-        </div>
-        <div class="gear-card">
-            <span class="gear-tag">Top Choice</span>
-            <h3>Gaming Headphone 3D Sound</h3>
-            <p>Dengar arah langkah kaki musuh dengan presisi surround sound yang jernih.</p>
-            <a href="#" class="btn-buy">CHECK PRICE</a>
-        </div>
-    </section>
-
     <!-- REVIEWS / TESTIMONIALS -->
-    <h2 class="section-title">WHAT OUR PLAYERS SAY</h2>
+    <h2 class="section-title">APA KATA PARA PEMAIN</h2>
     <section class="reviews-container">
         <div class="reviews-scroll">
             <div class="review-card">
                 <div class="reviewer-name">Fahad Khan</div>
-                <div class="reviewer-status">✓ Verified User</div>
-                <div class="review-text">"this is amazing app bro this sensitivity is so help full, headshot terus!"</div>
+                <div class="reviewer-status">✓ Pengguna Terverifikasi</div>
+                <div class="review-text">"Web ini mantap banget bro, sensitivitasnya sangat membantu, headshot terus!"</div>
             </div>
             <div class="review-card">
                 <div class="reviewer-name">Aman Shaikh</div>
-                <div class="reviewer-status">✓ Verified User</div>
-                <div class="review-text">"Increased my headshot rate instantly. Best tool for FF!"</div>
+                <div class="reviewer-status">✓ Pengguna Terverifikasi</div>
+                <div class="review-text">"Rasio headshot saya langsung meningkat. Alat terbaik untuk FF!"</div>
             </div>
             <div class="review-card">
                 <div class="reviewer-name">Rahul Sharma</div>
-                <div class="reviewer-status">✓ Verified User</div>
-                <div class="review-text">"Perfect DPI and HUD optimization, highly recommended."</div>
+                <div class="reviewer-status">✓ Pengguna Terverifikasi</div>
+                <div class="review-text">"Optimasi DPI dan HUD yang sempurna, sangat direkomendasikan."</div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 TAKI SENSI. All Rights Reserved.</p>
+        <p>© 2026 ELITE SENSI. Hak Cipta Dilindungi.</p>
+        <p style="font-size: 11px; margin-top: 5px;">Tidak berafiliasi dengan Garena Free Fire. Ini adalah alat bantu analisa pengaturan.</p>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
@@ -597,11 +523,11 @@
             if (audio.paused) {
                 audio.play();
                 musicBtn.innerText = "‖";
-                musicStatus.innerText = "BGM: ON";
+                musicStatus.innerText = "Musik: NYALA";
             } else {
                 audio.pause();
                 musicBtn.innerText = "▶";
-                musicStatus.innerText = "BGM: OFF";
+                musicStatus.innerText = "Musik: MATI";
             }
         }
 
@@ -621,7 +547,7 @@
         function startScanningProcess() {
             const model = document.getElementById('device-model').value.trim();
             if (model === "") {
-                showToast("Silakan isi Model HP dulu!");
+                showToast("Silakan isi Tipe HP dulu!");
                 return;
             }
 
@@ -683,7 +609,7 @@
             const s2x = document.getElementById('val-2x').innerText;
             const s4x = document.getElementById('val-4x').innerText;
             
-            const textToCopy = `Settingan Sensi FF Keren:\nGeneral: ${gen}\nRed Dot: ${red}\n2x Scope: ${s2x}\n4x Scope: ${s4x}\nBikin Auto Headshot!`;
+            const textToCopy = `Settingan Sensi FF Elite Sensi AI:\nLihat Sekeliling: ${gen}\nRed Dot Sight: ${red}\n2x Scope: ${s2x}\n4x Scope: ${s4x}\nAuto Headshot Parah!`;
             
             navigator.clipboard.writeText(textToCopy).then(() => {
                 showToast("Berhasil disalin ke Clipboard!");
