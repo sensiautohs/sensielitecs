@@ -3,366 +3,702 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ SENSI ELITE VVIP - AUTO HEADSHOT 2026 ⚡</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Tambahan: Library Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <!-- Google Fonts: Poppins & Oxanium for Gaming Vibes -->
-    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Sensi Guru AI v2 - Best FF Sensitivity Settings</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            background-color: #0b0b0f;
-            color: #f3f4f6;
         }
-        .gaming-font {
-            font-family: 'Oxanium', sans-serif;
+        body {
+            background-color: #0d0f14;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .fire-shadow {
-            text-shadow: 0 0 10px #ff003c, 0 0 20px #ff003c;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
-        .card-glow {
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.15);
-            border: 1px solid rgba(255, 0, 60, 0.3);
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #161a23;
+            border-bottom: 2px solid #ff4a4a;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        /* Custom scrollbar for live chat */
-        .chat-container::-webkit-scrollbar {
-            width: 4px;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .chat-container::-webkit-scrollbar-thumb {
-            background-color: #ff003c;
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ff4a4a;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #fff;
+        }
+        .badge-100k {
+            background: linear-gradient(45deg, #ff4a4a, #ff8533);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle at center, #1a1f2c 0%, #0d0f14 100%);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #ff4a4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: #a0aec0;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        /* --- GENERATOR MAIN CONTAINER --- */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+        .generator-card {
+            background-color: #161a23;
+            border: 1px solid #2d3748;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .card-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #ff4a4a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- FORM ELEMENTS --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #cbd5e0;
+        }
+        .os-selector {
+            display: flex;
+            gap: 15px;
+        }
+        .os-btn {
+            flex: 1;
+            background-color: #212631;
+            border: 2px solid #2d3748;
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .os-btn.active {
+            border-color: #ff4a4a;
+            background-color: rgba(255, 74, 74, 0.1);
+            color: #ff4a4a;
+        }
+        input[type="text"], select {
+            width: 100%;
+            background-color: #212631;
+            border: 2px solid #2d3748;
+            color: #fff;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, select:focus {
+            border-color: #ff4a4a;
+        }
+        .btn-generate {
+            width: 100%;
+            background: linear-gradient(45deg, #ff4a4a, #ff7300);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 74, 74, 0.4);
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+        .btn-generate:active {
+            transform: scale(0.98);
+        }
+
+        /* --- LOADING SCALAR --- */
+        .loader-box {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+            color: #ff7300;
+            font-weight: 600;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 74, 74, 0.1);
+            border-left-color: #ff4a4a;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* --- RESULTS SECTION --- */
+        .results-box {
+            margin-top: 30px;
+            background-color: #0d0f14;
+            border: 1px dashed #ff4a4a;
+            border-radius: 12px;
+            padding: 20px;
+            display: none;
+        }
+        .results-header {
+            text-align: center;
+            font-weight: 700;
+            color: #00ff66;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .sensi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .sensi-item {
+            background-color: #212631;
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #ff4a4a;
+        }
+        .sensi-label {
+            font-size: 14px;
+            color: #a0aec0;
+        }
+        .sensi-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .btn-copy {
+            width: 100%;
+            background-color: #212631;
+            color: #00ff66;
+            border: 1px solid #00ff66;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-copy:hover {
+            background-color: #00ff66;
+            color: #0d0f14;
+        }
+        .security-note {
+            text-align: center;
+            font-size: 12px;
+            color: #a0aec0;
+            margin-top: 15px;
+        }
+
+        /* --- TOAST NOTIFICATION --- */
+        .toast {
+            position: fixed;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #00ff66;
+            color: #0d0f14;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            z-index: 1000;
+            transition: top 0.4s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0,255,102,0.3);
+        }
+        .toast.show {
+            top: 20px;
+        }
+
+        /* --- MUSIC PLAYER WINDOW --- */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #161a23;
+            border: 1px solid #ff4a4a;
+            padding: 10px 15px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        .player-btn {
+            background-color: #ff4a4a;
+            border: none;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        .player-text {
+            font-size: 11px;
+            font-weight: 600;
+            color: #cbd5e0;
+        }
+
+        /* --- TRUSTED BADGES --- */
+        .badges-container {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .badge-item {
+            background-color: #161a23;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #2d3748;
+            color: #ff4a4a;
+        }
+
+        /* --- GAMING GEAR GEAR (AFFILIATE) --- */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 20px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        .gear-card {
+            background-color: #161a23;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2d3748;
+            text-align: center;
+        }
+        .gear-tag {
+            background-color: rgba(255, 74, 74, 0.2);
+            color: #ff4a4a;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .gear-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .gear-card p {
+            font-size: 13px;
+            color: #a0aec0;
+            margin-bottom: 15px;
+        }
+        .btn-buy {
+            background-color: #ff4a4a;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* --- REVIEWS / TESTIMONI --- */
+        .reviews-container {
+            background-color: #161a23;
+            padding: 40px 20px;
+        }
+        .reviews-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 15px;
+        }
+        .review-card {
+            min-width: 280px;
+            background-color: #212631;
+            padding: 20px;
             border-radius: 10px;
+            border: 1px solid #2d3748;
+        }
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #ff4a4a;
+        }
+        .reviewer-status {
+            font-size: 11px;
+            color: #00ff66;
+            margin-bottom: 8px;
+        }
+        .review-text {
+            font-size: 13px;
+            color: #cbd5e0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0d0f14;
+            border-top: 1px solid #2d3748;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #a0aec0;
+            margin-bottom: 60px; /* Spacer for fixed music player on mobile */
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Layout */
+        @media(max-width: 600px) {
+            .sensi-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
+<body>
 
-    <!-- TOP ANNOUNCEMENT (AUTO DETECTION BANNER) -->
-    <div class="bg-red-900/40 border-b border-red-600/50 py-2 px-4 text-center text-xs md:text-sm gaming-font tracking-wider text-red-400">
-        📢 SYSTEM: <span id="detected-device" class="font-bold text-white uppercase">Mendeteksi perangkat...</span> Terdeteksi! Sensitivitas dioptimalkan.
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast-notif">Sensi Berhasil Disalin!</div>
+
+    <!-- BACKGROUND AUDIO PLAYER -->
+    <div class="audio-player">
+        <button class="player-btn" id="music-btn" onclick="toggleMusic()">▶</button>
+        <span class="player-text" id="music-status">BGM: OFF</span>
+        <!-- Menggunakan musik bebas royalti bergenre synthwave/gaming -->
+        <audio id="bg-audio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-grow container mx-auto px-4 py-6 max-w-lg">
-        
-        <!-- HEADER / LOGO -->
-        <div class="text-center my-6">
-            <h1 class="gaming-font text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 to-red-600 tracking-wider fire-shadow">
-                SENSI ELITE VVIP
-            </h1>
-            <p class="text-gray-400 text-xs md:text-sm mt-1">Sensi Auto Headshot Terbaik Edisi Update Terkini 2026</p>
-            <div class="inline-flex items-center gap-2 mt-3 bg-red-900/30 px-3 py-1 rounded-full border border-red-600/30 text-[10pt]">
-                <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
-                <span class="text-green-400 font-semibold text-xs">ONLINE & AKTIF</span>
-            </div>
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">TAKI<span>SENSI</span></div>
+            <div class="badge-100k">100K+ DOWNLOADS</div>
         </div>
+    </header>
 
-        <!-- ADGUARD / ADBLOCK WARNING ALERT (Hidden by default, shown if AdBlock is active) -->
-        <div id="adblock-banner" class="hidden bg-yellow-600/20 border-2 border-yellow-500/80 rounded-xl p-4 mb-6 text-center animate-pulse">
-            <div class="text-yellow-400 text-3xl mb-1">⚠️</div>
-            <h3 class="gaming-font font-bold text-lg text-yellow-300">ADBLOCK / ADGUARD TERDETEKSI</h3>
-            <p class="text-xs text-gray-300 mt-1 leading-relaxed">
-                Matikan Adblock atau DNS AdGuard Anda untuk mengunduh Script Sensi. Web ini memerlukan akses tanpa blokir demi verifikasi sistem.
-            </p>
-        </div>
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Sensi Guru AI v2 ⚡</h1>
+        <p>Dapatkan rekomendasi settingan sensitivitas Free Fire terbaik khusus untuk perangkat HP kamu agar makin mudah headshot!</p>
+    </section>
 
-        <!-- DEVICE BRAND SELECTOR -->
-        <div class="bg-gray-900/80 rounded-2xl p-5 mb-6 card-glow">
-            <h2 class="gaming-font text-lg font-bold text-red-500 mb-3 flex items-center gap-2">
-                🎮 <span>KALIBRASI PERANGKAT</span>
-            </h2>
-            <p class="text-xs text-gray-400 mb-4">Silakan pilih merk HP Anda untuk menghasilkan kombinasi sensitivitas yang paling presisi:</p>
+    <!-- MAIN GENERATOR -->
+    <main class="main-container">
+        <div class="generator-card">
+            <div class="card-title">PRO ENGINE GENERATOR</div>
             
-            <div class="grid grid-cols-2 gap-3 mb-4">
-                <button onclick="selectBrand('Xiaomi')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Xiaomi</button>
-                <button onclick="selectBrand('Infinix')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Infinix</button>
-                <button onclick="selectBrand('Samsung')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Samsung</button>
-                <button onclick="selectBrand('Oppo')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Oppo</button>
-                <button onclick="selectBrand('Vivo')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Vivo</button>
-                <button onclick="selectBrand('Realme')" class="brand-btn bg-gray-800 hover:bg-red-600/20 border border-gray-700 hover:border-red-500 py-2.5 px-3 rounded-xl text-sm font-semibold transition text-center gaming-font">Realme</button>
+            <!-- Step 1: Select OS -->
+            <div class="form-group">
+                <label>PILIH SISTEM OPERASI (OS)</label>
+                <div class="os-selector">
+                    <div class="os-btn active" id="btn-android" onclick="selectOS('Android')">Android</div>
+                    <div class="os-btn" id="btn-ios" onclick="selectOS('iPhone')">iPhone / iOS</div>
+                </div>
             </div>
 
-            <!-- TAMBAHAN: Progress Bar -->
-            <div id="progress-container" class="hidden mb-4">
-                <div class="flex justify-between text-[10px] text-gray-400 mb-1">
-                    <span>Memverifikasi perangkat...</span>
-                    <span id="progress-text">0%</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                    <div id="progress-bar" class="bg-red-500 h-2 rounded-full w-0 transition-all duration-300"></div>
-                </div>
+            <!-- Step 2: Device Model -->
+            <div class="form-group">
+                <label>MODEL PERANGKAT (CONTOH: REDMI NOTE 12 / INFIX)</label>
+                <input type="text" id="device-model" placeholder="Masukkan tipe HP kamu...">
             </div>
-            
-            <!-- Generate Button -->
-            <button id="btn-generate" onclick="generateSensi()" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 py-3 rounded-xl font-bold tracking-wider gaming-font transition text-white text-md shadow-lg shadow-red-950/50">
-                ⚡ AMBIL SENSI SEKARANG
-            </button>
+
+            <!-- Step 3: Device Age -->
+            <div class="form-group">
+                <label>UMUR PERANGKAT (DALAM TAHUN)</label>
+                <select id="device-age">
+                    <option value="0">Kurang dari 1 Tahun (Baru)</option>
+                    <option value="1">1 Tahun</option>
+                    <option value="2">2 Tahun</option>
+                    <option value="3">Lebih dari 3 Tahun</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="btn-generate" onclick="startScanningProcess()">GENERATE BEST SENSI</button>
+
+            <!-- LOADING BOX -->
+            <div class="loader-box" id="loader-box">
+                <div class="spinner"></div>
+                <div id="loading-text">AI sedang membaca sensitivitas layar...</div>
+            </div>
+
+            <!-- RESULTS -->
+            <div class="results-box" id="results-box">
+                <div class="results-header">⚙️ OB54 META READY OPTIMIZED</div>
+                <div class="sensi-grid">
+                    <div class="sensi-item"><span class="sensi-label">General</span><span class="sensi-value" id="val-general">--</span></div>
+                    <div class="sensi-item"><span class="sensi-label">Red Dot</span><span class="sensi-value" id="val-reddot">--</span></div>
+                    <div class="sensi-item"><span class="sensi-label">2x Scope</span><span class="sensi-value" id="val-2x">--</span></div>
+                    <div class="sensi-item"><span class="sensi-label">4x Scope</span><span class="sensi-value" id="val-4x">--</span></div>
+                    <div class="sensi-item"><span class="sensi-label">Sniper Scope</span><span class="sensi-value" id="val-sniper">--</span></div>
+                    <div class="sensi-item"><span class="sensi-label">Free Look</span><span class="sensi-value" id="val-freelook">--</span></div>
+                </div>
+                <button class="btn-copy" onclick="copyToClipboard()">COPY ALL SETTINGS</button>
+                <div class="security-note">✓ Aman | Bukan Injector/Cheat | Atur Manual di Game</div>
+            </div>
+
         </div>
-
-        
-<!-- Ad Script -->
-<script src="https://bigotcomet.com/qpt30est3?key=18a3750c20c6ddd857d68b2db110b06b.js"></script>
-
-<script async="async" data-cfasync="false" src="https://bigotcomet.com/96722b5e2c790a6b06da6dbc0cb5d956/invoke.js"></script>
-<div id="container-96722b5e2c790a6b06da6dbc0cb5d956"></div>
-
-<script>
-atOptions={'key':'1ad9cbc2cca914ab050329176ecd4a13','format':'iframe','height':90,'width':728,'params':{}};
-</script>
-<script src="https://bigotcomet.com/1ad9cbc2cca914ab050329176ecd4a13/invoke.js"></script>
-
-<!-- GENERATED RESULTS PANEL (Hidden until click) -->
-        <div id="results-panel" class="hidden bg-gray-900/90 rounded-2xl p-5 mb-6 card-glow border-red-500/50">
-            <h2 class="gaming-font text-lg font-bold text-green-400 mb-3 flex items-center gap-2">
-                ✅ <span>SENSI BERHASIL DIKALIBRASI</span>
-            </h2>
-            <div class="space-y-3 mb-5 bg-gray-950 p-4 rounded-xl text-sm">
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">Target Perangkat:</span>
-                    <span class="font-bold text-white gaming-font" id="result-brand">-</span>
-                </div>
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">Lihat Sekeliling:</span>
-                    <span class="font-bold text-yellow-400 gaming-font" id="val-aim">98%</span>
-                </div>
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">Red Dot Sight:</span>
-                    <span class="font-bold text-yellow-400 gaming-font" id="val-red">94%</span>
-                </div>
-                <div class="flex justify-between border-b border-gray-800 pb-2">
-                    <span class="text-gray-400">2x Scope:</span>
-                    <span class="font-bold text-yellow-400 gaming-font" id="val-2x">96%</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">4x Scope:</span>
-                    <span class="font-bold text-yellow-400 gaming-font" id="val-4x">92%</span>
-                </div>
-            </div>
-
-            <!-- BUTTON DOWNLOAD WITH INTERACTIVE COUNTDOWN -->
-            <div id="download-section">
-                <button id="btn-download" onclick="startDownload()" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 py-3.5 rounded-xl font-bold tracking-wider gaming-font transition text-white text-center shadow-lg">
-                    📥 DOWNLOAD SCRIPT VVIP (NO PASSWORD)
-                </button>
-                <div id="countdown-box" class="hidden text-center py-2">
-                    <div class="text-xs text-gray-400 mb-2">Mengamankan file script dari server Garena...</div>
-                    <div class="flex justify-center items-center gap-3">
-                        <span class="animate-spin h-5 w-5 border-2 border-green-500 border-t-transparent rounded-full"></span>
-                        <span class="gaming-font font-bold text-green-400 text-lg">Mengunduh dalam <span id="timer-number" class="text-white text-xl">3</span> detik...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FAKE LIVE CHAT TESTIMONI (FF Gamer Style) -->
-        <div class="bg-gray-900/80 rounded-2xl p-4 card-glow mb-6">
-            <h2 class="gaming-font text-sm font-bold text-red-500 mb-3 flex items-center gap-2">
-                💬 <span class="tracking-wide">TESTIMONI LIVE CHAT</span>
-            </h2>
-            <!-- Scrollable chat box -->
-            <div id="chat-box" class="chat-container max-h-[160px] overflow-y-auto space-y-3 pr-2 text-xs">
-                <!-- Javascript will auto-generate & push new messages here -->
-            </div>
-        </div>
-
     </main>
 
+    <!-- TRUSTED BADGES -->
+    <div class="badges-container">
+        <div class="badge-item">⚡ 10,000+ DEVICES</div>
+        <div class="badge-item">🔥 OB54 META READY</div>
+        <div class="badge-item">🛡️ 100% SECURE</div>
+    </div>
+
+    <!-- RECOMMENDED GEAR -->
+    <h2 class="section-title">RECOMMENDED GAMING GEAR</h2>
+    <section class="gear-grid">
+        <div class="gear-card">
+            <span class="gear-tag">Best Seller</span>
+            <h3>Pro Gaming Finger Sleeves</h3>
+            <p>Sarung jempol anti keringat untuk kelancaran layar saat melakukan drag shoot.</p>
+            <a href="#" class="btn-buy">GRAB NOW</a>
+        </div>
+        <div class="gear-card">
+            <span class="gear-tag">Special Deal</span>
+            <h3>Precision L1R1 Triggers</h3>
+            <p>Tombol mekanik tambahan untuk kontrol responsif layaknya gamer 4 jari pro.</p>
+            <a href="#" class="btn-buy">BUY NOW</a>
+        </div>
+        <div class="gear-card">
+            <span class="gear-tag">Top Choice</span>
+            <h3>Gaming Headphone 3D Sound</h3>
+            <p>Dengar arah langkah kaki musuh dengan presisi surround sound yang jernih.</p>
+            <a href="#" class="btn-buy">CHECK PRICE</a>
+        </div>
+    </section>
+
+    <!-- REVIEWS / TESTIMONIALS -->
+    <h2 class="section-title">WHAT OUR PLAYERS SAY</h2>
+    <section class="reviews-container">
+        <div class="reviews-scroll">
+            <div class="review-card">
+                <div class="reviewer-name">Fahad Khan</div>
+                <div class="reviewer-status">✓ Verified User</div>
+                <div class="review-text">"this is amazing app bro this sensitivity is so help full, headshot terus!"</div>
+            </div>
+            <div class="review-card">
+                <div class="reviewer-name">Aman Shaikh</div>
+                <div class="reviewer-status">✓ Verified User</div>
+                <div class="review-text">"Increased my headshot rate instantly. Best tool for FF!"</div>
+            </div>
+            <div class="review-card">
+                <div class="reviewer-name">Rahul Sharma</div>
+                <div class="reviewer-status">✓ Verified User</div>
+                <div class="review-text">"Perfect DPI and HUD optimization, highly recommended."</div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
-    <footer class="bg-gray-950/80 border-t border-gray-900 py-4 text-center text-[10px] text-gray-500">
-        <p>© 2026 Sensi Elite VVIP. All rights reserved.</p>
-        <p class="mt-1">Dibuat khusus untuk pengoptimalan sensitivitas game Free Fire.</p>
+    <footer>
+        <p>© 2026 TAKI SENSI. All Rights Reserved.</p>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT & AD ADSTERRA DETECTOR -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // --- CONFIGURATION ---
-        const ADSTERRA_DIRECT_LINK = "https://bigotcomet.com/yg5d5m68?key=3f65b078b61df4f332956f06964a1c1f"; 
-        
-        let selectedBrandName = "";
-        let isAdblockActive = false;
+        let selectedOS = "Android";
+        const audio = document.getElementById('bg-audio');
+        const musicBtn = document.getElementById('music-btn');
+        const musicStatus = document.getElementById('music-status');
 
-        // 1. AUTO DEVICE DETECTION
-        function detectDevice() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            let deviceType = "Android";
-            
-            if (/android/i.test(userAgent)) {
-                if (/xiaomi|redmi|mi/i.test(userAgent)) {
-                    deviceType = "Xiaomi / POCO";
-                } else if (/infinix/i.test(userAgent)) {
-                    deviceType = "Infinix Mobile";
-                } else if (/samsung/i.test(userAgent)) {
-                    deviceType = "Samsung Galaxy";
-                } else if (/oppo/i.test(userAgent)) {
-                    deviceType = "Oppo Smart";
-                } else if (/vivo/i.test(userAgent)) {
-                    deviceType = "Vivo Smart";
-                } else if (/realme/i.test(userAgent)) {
-                    deviceType = "Realme Device";
-                }
-            } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-                deviceType = "iPhone / iOS";
+        // Fitur Pemutar Musik
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicBtn.innerText = "‖";
+                musicStatus.innerText = "BGM: ON";
             } else {
-                deviceType = "Android User";
+                audio.pause();
+                musicBtn.innerText = "▶";
+                musicStatus.innerText = "BGM: OFF";
             }
-            document.getElementById("detected-device").textContent = deviceType;
         }
 
-        // 2. ADGUARD / ADBLOCK DETECTOR
-        function checkAdBlocker() {
-            const fakeAdUrl = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-            fetch(new Request(fakeAdUrl), { method: 'HEAD', mode: 'no-cors' })
-                .then(() => {
-                    isAdblockActive = false;
-                })
-                .catch(() => {
-                    isAdblockActive = true;
-                    document.getElementById("adblock-banner").classList.remove("hidden");
-                });
+        function selectOS(os) {
+            selectedOS = os;
+            document.getElementById('btn-android').classList.remove('active');
+            document.getElementById('btn-ios').classList.remove('active');
+            
+            if(os === 'Android') {
+                document.getElementById('btn-android').classList.add('active');
+            } else {
+                document.getElementById('btn-ios').classList.add('active');
+            }
         }
 
-        // 3. BRAND SELECTOR ACTION
-        function selectBrand(brand) {
-            selectedBrandName = brand;
-            const buttons = document.querySelectorAll(".brand-btn");
-            buttons.forEach(btn => {
-                if (btn.textContent.trim() === brand) {
-                    btn.classList.add("bg-red-600", "border-red-500", "text-white");
-                    btn.classList.remove("bg-gray-800", "border-gray-700");
-                } else {
-                    btn.classList.remove("bg-red-600", "border-red-500", "text-white");
-                    btn.classList.add("bg-gray-800", "border-gray-700");
+        // Fitur Loading Fake AI Scanner
+        function startScanningProcess() {
+            const model = document.getElementById('device-model').value.trim();
+            if (model === "") {
+                showToast("Silakan isi Model HP dulu!");
+                return;
+            }
+
+            // Sembunyikan hasil lama & tampilkan loading
+            document.getElementById('results-box').style.display = 'none';
+            document.getElementById('loader-box').style.display = 'block';
+            
+            const textLines = [
+                "Menghubungkan ke core AI...",
+                "Menganalisa DPI layar " + model + "...",
+                "Menyesuaikan Umur Hardware...",
+                "Selesai! Mengoptimalkan sensitivitas..."
+            ];
+            
+            let lineIndex = 0;
+            const textElem = document.getElementById('loading-text');
+            
+            const interval = setInterval(() => {
+                lineIndex++;
+                if(lineIndex < textLines.length) {
+                    textElem.innerText = textLines[lineIndex];
                 }
+            }, 600);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                document.getElementById('loader-box').style.display = 'none';
+                generateSensitivity();
+            }, 2400);
+        }
+
+        function generateSensitivity() {
+            const age = parseInt(document.getElementById('device-age').value);
+            let baseModifier = age * 2; 
+            
+            let general = Math.min(100, Math.floor(Math.random() * 5) + 93 + (selectedOS === "iPhone" ? -3 : baseModifier));
+            let reddot = Math.min(100, Math.floor(Math.random() * 6) + 88 + baseModifier);
+            let scope2x = Math.min(100, Math.floor(Math.random() * 5) + 85);
+            let scope4x = Math.min(100, Math.floor(Math.random() * 5) + 80);
+            let sniper = Math.floor(Math.random() * 10) + 50;
+            let freelook = Math.floor(Math.random() * 15) + 65;
+
+            document.getElementById('val-general').innerText = general;
+            document.getElementById('val-reddot').innerText = reddot;
+            document.getElementById('val-2x').innerText = scope2x;
+            document.getElementById('val-4x').innerText = scope4x;
+            document.getElementById('val-sniper').innerText = sniper;
+            document.getElementById('val-freelook').innerText = freelook;
+
+            document.getElementById('results-box').style.display = 'block';
+            document.getElementById('results-box').scrollIntoView({ behavior: 'smooth' });
+            showToast("Sensitivitas Berhasil Dibuat!");
+        }
+
+        // Fitur Salin Teks hasil generator
+        function copyToClipboard() {
+            const gen = document.getElementById('val-general').innerText;
+            const red = document.getElementById('val-reddot').innerText;
+            const s2x = document.getElementById('val-2x').innerText;
+            const s4x = document.getElementById('val-4x').innerText;
+            
+            const textToCopy = `Settingan Sensi FF Keren:\nGeneral: ${gen}\nRed Dot: ${red}\n2x Scope: ${s2x}\n4x Scope: ${s4x}\nBikin Auto Headshot!`;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showToast("Berhasil disalin ke Clipboard!");
             });
         }
 
-        // 4. GENERATE SENSITIVITY ACTION
-        function generateSensi() {
-            if (!selectedBrandName) {
-                alert("Pilih Merk HP Lu Dulu Bray!");
-                return;
-            }
-
-            if (isAdblockActive) {
-                alert("⚠️ Sistem Keamanan: Harap matikan AdBlock atau DNS AdGuard Anda untuk mulai mengunduh file Sensi!");
-                document.getElementById("adblock-banner").scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-
-            // TAMBAHAN: Logika Progress Bar
-            document.getElementById("progress-container").classList.remove("hidden");
-            let width = 0;
-            let progressInterval = setInterval(() => {
-                if (width >= 100) {
-                    clearInterval(progressInterval);
-                    // Lanjut ke hasil setelah loading
-                    const aim = Math.floor(Math.random() * 6) + 94;
-                    const red = Math.floor(Math.random() * 6) + 90;
-                    const scope2 = Math.floor(Math.random() * 6) + 93;
-                    const scope4 = Math.floor(Math.random() * 6) + 89;
-
-                    document.getElementById("result-brand").textContent = selectedBrandName.toUpperCase();
-                    document.getElementById("val-aim").textContent = aim + "%";
-                    document.getElementById("val-red").textContent = red + "%";
-                    document.getElementById("val-2x").textContent = scope2 + "%";
-                    document.getElementById("val-4x").textContent = scope4 + "%";
-
-                    const panel = document.getElementById("results-panel");
-                    panel.classList.remove("hidden");
-                    panel.scrollIntoView({ behavior: 'smooth' });
-                    window.open(ADSTERRA_DIRECT_LINK, '_blank');
-                } else {
-                    width += 10;
-                    document.getElementById("progress-bar").style.width = width + "%";
-                    document.getElementById("progress-text").textContent = width + "%";
-                }
-            }, 200);
-        }
-
-        // 5. DOWNLOAD ACTION WITH COUNTDOWN & REDIRECT
-        function startDownload() {
-            if (isAdblockActive) {
-                alert("⚠️ Sistem Keamanan: Harap matikan AdBlock atau DNS AdGuard Anda untuk mulai mengunduh file Sensi!");
-                document.getElementById("adblock-banner").scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-
-            // TAMBAHAN: Efek Confetti
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-
-            const downloadBtn = document.getElementById("btn-download");
-            const countdownBox = document.getElementById("countdown-box");
-            const timerText = document.getElementById("timer-number");
-
-            downloadBtn.classList.add("hidden");
-            countdownBox.classList.remove("hidden");
-
-            let timeLeft = 3;
-            timerText.textContent = timeLeft;
-
-            const countdownInterval = setInterval(() => {
-                timeLeft--;
-                timerText.textContent = timeLeft;
-
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    window.location.href = ADSTERRA_DIRECT_LINK;
-                }
-            }, 1000);
-        }
-
-        // 6. FAKE LIVE CHAT SYSTEM
-        const fakeChatPool = [
-            { name: "Fadhil_Slayer", msg: "Sumpah work 100% di Xiaomi Redmi 9C gw, langsung merah semua headshotnya!" },
-            { name: "Infinix_Booyah", msg: "Gokil bray, tadinya ga percaya pas coba script vvip ini gila langsung auto aim lock!" },
-            { name: "Rian_Gamerz", msg: "Thanks bang sensinya dapet yang paling presisi, musuh langsung dituduh citer wkwkw" },
-            { name: "Siti_Chii", msg: "Bocil FF wajib pake ini sih, biar ga numpang beban di rank wkwk" },
-            { name: "Ex_CiterFF", msg: "Ini sensi aman ga di akun utama bray? | Balas: Aman banget no banned asli." },
-            { name: "RajaHshot", msg: "Habis download script langsung naik bintang di Ranked bray, parah ngeri banget" },
-            { name: "Samsul_99", msg: "Enak banget fiturnya, tadi pas nembak langsung nge-lock kepala" },
-            { name: "Kiki_Riz", msg: "Keren sumpah, makasih min infonya, ijin share ke grup guild ya!" },
-            { name: "Luthfi_OP", msg: "Infinix Hot 10 gw langsung gila sensinya, licin nembaknya!" }
-        ];
-
-        function startFakeChat() {
-            const chatBox = document.getElementById("chat-box");
-            
-            for(let i = 0; i < 4; i++) {
-                addRandomChat();
-            }
-
-            setInterval(() => {
-                addRandomChat();
-                if (chatBox.children.length > 12) {
-                    chatBox.removeChild(chatBox.firstChild);
-                }
-            }, 4000);
-        }
-
-        function addRandomChat() {
-            const chatBox = document.getElementById("chat-box");
-            const randomUser = fakeChatPool[Math.floor(Math.random() * fakeChatPool.length)];
-            
-            const chatBubble = document.createElement("div");
-            chatBubble.className = "bg-gray-950 p-2.5 rounded-xl border border-gray-800/40 animate-fade-in";
-            chatBubble.innerHTML = `
-                <div class="flex items-center justify-between mb-1">
-                    <span class="font-bold text-red-400 gaming-font">⚡ ${randomUser.name}</span>
-                    <span class="text-[9px] text-gray-600">Baru saja</span>
-                </div>
-                <p class="text-gray-300">${randomUser.msg}</p>
-            `;
-            chatBox.appendChild(chatBubble);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        window.onload = function() {
-            detectDevice();
-            checkAdBlocker();
-            startFakeChat();
+        // Fitur memunculkan Toast Alert Keren
+        function showToast(message) {
+            const toast = document.getElementById('toast-notif');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
         }
     </script>
-<script src="https://bigotcomet.com/58/b0/a7/58b0a7213cf3fb0c5c1c92f3a00018d1.js"></script>
 </body>
 </html>
